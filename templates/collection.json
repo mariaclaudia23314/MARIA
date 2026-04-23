@@ -3,16 +3,31 @@
     "collection-banner": {
       "type": "collection-banner",
       "settings": {
-        "show_collection_description": true,
-        "show_collection_image": false
+        "tag": "Catalog",
+        "title_line_1": "Custom-Printed",
+        "title_line_2": "Apparel & Accessories",
+        "show_proof_tagline": true
       }
+    },
+    "trust-bar": {
+      "type": "trust-bar",
+      "settings": {},
+      "blocks": {
+        "item1": { "type": "item", "settings": { "text": "No Minimum Orders" } },
+        "item2": { "type": "item", "settings": { "text": "Free Digital Proof in 24h" } },
+        "item3": { "type": "item", "settings": { "text": "Ships in 3–5 Days" } },
+        "item4": { "type": "item", "settings": { "text": "Beverly, MA" } },
+        "item5": { "type": "item", "settings": { "text": "4 Print Technologies" } },
+        "item6": { "type": "item", "settings": { "text": "B2B Specialists" } }
+      },
+      "block_order": ["item1","item2","item3","item4","item5","item6"]
     },
     "main": {
       "type": "main-collection",
       "settings": {
         "products_per_page": 24,
-        "columns_desktop": "4",
-        "columns_mobile": 2,
+        "columns_desktop": "3",
+        "columns_mobile": "2",
         "enable_filtering": true,
         "filter_type": "sidebar",
         "enable_sorting": true,
@@ -20,5 +35,5 @@
       }
     }
   },
-  "order": ["collection-banner", "main"]
+  "order": ["collection-banner", "trust-bar", "main"]
 }
