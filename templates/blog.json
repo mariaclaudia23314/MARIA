@@ -9,7 +9,7 @@
         "show_date": true,
         "show_author": false,
         "show_excerpt": true,
-        "columns_desktop": 3
+        "columns_desktop": "3"
       }
     }
   },

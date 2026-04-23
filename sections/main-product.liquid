@@ -79,7 +79,8 @@
 
         {%- comment -%} Trust badges {%- endcomment -%}
         <div style="display:flex;flex-direction:column;gap:0.5rem">
-          {%- for item in 'Free digital proof in 24h,No minimum order quantity,Ships in 3–5 business days,Print-ready files provided' | split: ',' -%}
+          {%- assign trust_items = 'Free digital proof in 24h,No minimum order quantity,Ships in 3–5 business days,Print-ready files provided' | split: ',' -%}
+        {%- for item in trust_items -%}
             <div style="display:flex;align-items:center;gap:0.625rem;font-size:0.75rem;color:var(--color-text-muted)">
               <div style="width:4px;height:4px;border-radius:50%;background:var(--color-primary);flex-shrink:0"></div>
               {{ item }}
