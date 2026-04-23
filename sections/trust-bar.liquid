@@ -1,19 +1,19 @@
 {% comment %}Inkcora — sections/trust-bar.liquid{% endcomment %}
 {%- if settings.show_trust_bar -%}
-<div class="trust-bar">
-  <div class="trust-bar__inner">
+<div class="trust-bar" style="background:var(--color-navy);color:rgba(255,255,255,0.75)">
+  <div class="trust-bar__inner" style="justify-content:center">
     {%- for block in section.blocks -%}
-      <div class="trust-bar__item" {{ block.shopify_attributes }}>
+      <div class="trust-bar__item" style="border-right-color:rgba(255,255,255,0.12)" {{ block.shopify_attributes }}>
         <div class="trust-bar__dot"></div>
         <span>{{ block.settings.text }}</span>
       </div>
     {%- else -%}
-      <div class="trust-bar__item"><div class="trust-bar__dot"></div><span>No Minimum Orders</span></div>
-      <div class="trust-bar__item"><div class="trust-bar__dot"></div><span>Free Digital Proof in 24h</span></div>
-      <div class="trust-bar__item"><div class="trust-bar__dot"></div><span>Ships in 3–5 Days</span></div>
-      <div class="trust-bar__item"><div class="trust-bar__dot"></div><span>Beverly, MA</span></div>
-      <div class="trust-bar__item"><div class="trust-bar__dot"></div><span>4 Print Technologies</span></div>
-      <div class="trust-bar__item"><div class="trust-bar__dot"></div><span>B2B Specialists</span></div>
+      <div class="trust-bar__item" style="border-right-color:rgba(255,255,255,0.12)"><div class="trust-bar__dot"></div><span>No Minimum Orders</span></div>
+      <div class="trust-bar__item" style="border-right-color:rgba(255,255,255,0.12)"><div class="trust-bar__dot"></div><span>Free Digital Proof in 24h</span></div>
+      <div class="trust-bar__item" style="border-right-color:rgba(255,255,255,0.12)"><div class="trust-bar__dot"></div><span>Ships in 3–5 Days</span></div>
+      <div class="trust-bar__item" style="border-right-color:rgba(255,255,255,0.12)"><div class="trust-bar__dot"></div><span>Beverly, MA</span></div>
+      <div class="trust-bar__item" style="border-right-color:rgba(255,255,255,0.12)"><div class="trust-bar__dot"></div><span>4 Print Technologies</span></div>
+      <div class="trust-bar__item" style="border-right:none"><div class="trust-bar__dot"></div><span>B2B Specialists</span></div>
     {%- endfor -%}
   </div>
 </div>
