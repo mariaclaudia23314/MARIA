@@ -5,7 +5,7 @@ function initScrollReveal() {
   if (!window.IntersectionObserver) return;
   const obs = new IntersectionObserver(entries => {
     entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+      if (e.isIntersecting) { e.target.classList.add('is-visible'); obs.unobserve(e.target); }
     });
   }, { threshold: 0.12 });
   document.querySelectorAll('.scroll-reveal').forEach(el => obs.observe(el));

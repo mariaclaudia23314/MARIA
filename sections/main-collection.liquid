@@ -1,6 +1,7 @@
 {% comment %}Inkcora — sections/main-collection.liquid{% endcomment %}
 <section class="section">
   <div class="page-width">
+    <form action="{{ request.path }}" method="GET">
     <div style="display:grid;grid-template-columns:220px 1fr;gap:2.5rem;align-items:start">
       {%- comment -%} Filters sidebar {%- endcomment -%}
       <aside style="position:sticky;top:88px">
@@ -48,6 +49,7 @@
         </div>
       </div>
     </div>
+    </form>
   </div>
 </section>
 

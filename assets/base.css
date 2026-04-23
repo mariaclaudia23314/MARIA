@@ -252,7 +252,7 @@ h1, h2, h3, h4, h5, h6 {
 .trust-bar__dot { width: 5px; height: 5px; border-radius: 50%; background: var(--color-primary); flex-shrink: 0; }
 
 /* ── Hero ────────────────────────────────────────────────────── */
-.hero { position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: flex-end; }
+.hero { position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: flex-end; background: var(--color-navy, #1a2038); min-height: 70vh; }
 .hero__overlay { position: absolute; inset: 0; pointer-events: none; }
 .hero__content { position: relative; z-index: 2; }
 .hero__eyebrow {
@@ -374,16 +374,11 @@ h1, h2, h3, h4, h5, h6 {
 @keyframes slideInLeft { from { opacity:0; transform:translateX(-20px); } to { opacity:1; transform:none; } }
 @keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-4px)} }
 
-{% if settings.animations_reveal_on_scroll %}
 .scroll-reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.65s ease, transform 0.65s ease; }
 .scroll-reveal.is-visible { opacity: 1; transform: none; }
-{% endif %}
 
-{% if settings.animations_hover_elements == 'lift' %}
 .animate--lift:hover { transform: translateY(-3px); transition: transform 0.2s ease; }
-{% elsif settings.animations_hover_elements == 'scale' %}
 .animate--scale:hover { transform: scale(1.02); transition: transform 0.2s ease; }
-{% endif %}
 
 /* ── Responsive ─────────────────────────────────────────────── */
 @media (max-width: 768px) {
