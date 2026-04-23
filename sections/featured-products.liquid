@@ -8,7 +8,7 @@
             <div class="section-tag {% if section.settings.color_scheme == 'dark' %}section-tag--light{% endif %}">{{ section.settings.tag }}</div>
           {%- endif -%}
           {%- if section.settings.title != blank -%}
-            <h2 class="h2 {% if section.settings.color_scheme == 'dark' %}" style="color:#fff"{%- else -%}"{%- endif -%}>{{ section.settings.title }}</h2>
+            <h2 class="h2" {% if section.settings.color_scheme == 'dark' %}style="color:#fff"{% endif %}>{{ section.settings.title }}</h2>
           {%- endif -%}
         </div>
         {%- if section.settings.view_all_label != blank -%}
