@@ -1,10 +1,10 @@
 {% comment %}Inkcora — sections/stats.liquid{% endcomment %}
-<section class="section" style="padding:3rem 0;border-top:1px solid var(--color-border);border-bottom:1px solid var(--color-border);background:var(--color-background)">
+<section style="padding:3rem 0;border-top:1px solid var(--color-border);border-bottom:1px solid var(--color-border);background:var(--color-background)">
   <div class="page-width">
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);text-align:center;gap:2rem">
+    <div style="display:grid;grid-template-columns:repeat({{ section.blocks.size }},1fr);text-align:center">
       {%- for block in section.blocks -%}
-        <div {{ block.shopify_attributes }}>
-          <div style="font-family:var(--font-heading,serif);font-size:clamp(2rem,4vw,3rem);font-weight:700;color:var(--color-navy);line-height:1">{{ block.settings.number }}</div>
+        <div {{ block.shopify_attributes }} style="padding:0 2rem;{% unless forloop.last %}border-right:1px solid var(--color-border);{% endunless %}">
+          <div style="font-family:var(--font-heading,serif);font-size:clamp(2rem,4vw,3rem);font-weight:700;color:var(--color-primary);line-height:1">{{ block.settings.number }}</div>
           <div style="font-size:0.625rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-text-muted);margin-top:0.5rem">{{ block.settings.label }}</div>
         </div>
       {%- endfor -%}
@@ -40,3 +40,4 @@
   ]
 }
 {% endschema %}
+
