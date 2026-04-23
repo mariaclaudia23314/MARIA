@@ -158,6 +158,18 @@
       },
       "block_order": ["c1","c2","c3","c4","c5","c6","c7","c8","c9"]
     },
+    "cta-final": {
+      "type": "rich-text",
+      "settings": {
+        "title": "Ready to strengthen your brand?",
+        "text": "No minimums. Free proof. Ships in days. Start your order today.",
+        "cta_label": "Browse Products",
+        "cta_url": "/collections/all",
+        "cta_secondary_label": "Contact Us",
+        "cta_secondary_url": "/pages/contact",
+        "color_scheme": "white"
+      }
+    },
     "strategic-case": {
       "type": "strategic-case",
       "settings": {
@@ -180,5 +192,5 @@
       "block_order": ["col1","col2","col3"]
     }
   },
-  "order": ["hero","urgency-bar","trust-bar","stats","services","featured-products","brand-partner","testimonials","corporate-accounts","local-service","strategic-case"]
+  "order": ["hero","urgency-bar","trust-bar","stats","services","featured-products","brand-partner","testimonials","corporate-accounts","local-service","strategic-case","cta-final"]
 }
