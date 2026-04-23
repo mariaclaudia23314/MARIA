@@ -94,7 +94,7 @@
         "type": "font_picker",
         "id": "type_heading_font",
         "label": "Fuente de títulos",
-        "default": "cormorant_garamond_n6"
+        "default": "cormorant_garamond_n4"
       },
       {
         "type": "font_picker",
@@ -133,7 +133,7 @@
         "min": 1000,
         "max": 1600,
         "step": 100,
-        "default": 1280,
+        "default": 1200,
         "unit": "px",
         "label": "Ancho máximo de página"
       },
