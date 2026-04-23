@@ -2,14 +2,14 @@
 <section class="hero" style="{% if section.settings.overlay_color != blank %}--hero-overlay: {{ section.settings.overlay_color }};{% endif %}">
   {%- if section.settings.background_image -%}
     <div style="position:absolute;inset:0;z-index:0">
-      {%- assign img_opacity = section.settings.image_overlay_opacity | default: 0.6 -%}
+      {%- assign img_opacity = section.settings.image_overlay_opacity | default: 6 | divided_by: 10.0 -%}
       {{ section.settings.background_image | image_url: width: 1920 | image_tag: loading: 'eager', fetchpriority: 'high', style: 'width:100%;height:100%;object-fit:cover', class: 'hero__bg-img' }}
       <style>.hero__bg-img { opacity: {{ img_opacity }}; }</style>
       <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.5),transparent 60%)"></div>
     </div>
   {%- else -%}
     <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.025) 1px,transparent 1px);background-size:80px 80px;pointer-events:none;z-index:0"></div>
-    <div style="position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 68% 38%,{{ section.settings.glow_color | default: 'rgba(194,110,41,0.22)' }},transparent 65%);pointer-events:none;z-index:0"></div>
+    <div style="position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 68% 38%,{{ section.settings.glow_color | default: '#c26e29' | color_modify: 'alpha', 0.22 }},transparent 65%);pointer-events:none;z-index:0"></div>
   {%- endif -%}
 
   <div class="page-width">
@@ -68,8 +68,6 @@
 {% schema %}
 {
   "name": "Hero principal",
-  "tag": "section",
-  "class": "section-hero",
   "settings": [
     { "type": "text", "id": "eyebrow", "label": "Texto eyebrow", "default": "Beverly, MA · B2B Custom Printing" },
     { "type": "text", "id": "title", "label": "Título principal", "default": "We Strengthen" },
@@ -80,8 +78,8 @@
     { "type": "text", "id": "cta_secondary_label", "label": "CTA secundario — texto", "default": "Request a Quote" },
     { "type": "url", "id": "cta_secondary_url", "label": "CTA secundario — enlace", "default": "/pages/contact" },
     { "type": "image_picker", "id": "background_image", "label": "Imagen de fondo (opcional)" },
-    { "type": "range", "id": "image_overlay_opacity", "min": 0.1, "max": 1.0, "step": 0.1, "default": 0.6, "label": "Opacidad de imagen" },
-    { "type": "color", "id": "glow_color", "label": "Color del resplandor", "default": "rgba(194,110,41,0.22)" },
+    { "type": "range", "id": "image_overlay_opacity", "min": 1, "max": 10, "step": 1, "default": 6, "label": "Opacidad de imagen (÷10)" },
+    { "type": "color", "id": "glow_color", "label": "Color del resplandor", "default": "#c26e29" },
     { "type": "checkbox", "id": "show_stats", "label": "Mostrar estadísticas", "default": true },
     { "type": "text", "id": "stat_1_number", "label": "Estadística 1 — número", "default": "500+" },
     { "type": "text", "id": "stat_1_label", "label": "Estadística 1 — etiqueta", "default": "Brands Served" },
