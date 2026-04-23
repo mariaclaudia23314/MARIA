@@ -1,0 +1,91 @@
+{% comment %}Inkcora — sections/brand-partner.liquid{% endcomment %}
+<section class="section" style="background:var(--color-background-secondary);padding:var(--spacing-sections,5rem) 0">
+  <div class="page-width">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center">
+
+      {%- comment -%} Image {%- endcomment -%}
+      <div>
+        {%- if section.settings.image -%}
+          <div style="border-radius:var(--radius-card,8px);overflow:hidden">
+            {%- assign img_alt = section.settings.image_alt | default: 'Lifestyle — Inkcora branded apparel' -%}
+            {{ section.settings.image | image_url: width: 800 | image_tag: loading: 'lazy', style: 'width:100%;aspect-ratio:4/5;object-fit:cover;display:block', alt: img_alt }}
+          </div>
+        {%- else -%}
+          <div style="border-radius:var(--radius-card,8px);overflow:hidden;background:#e8e2d8;aspect-ratio:4/5;display:flex;align-items:flex-end;justify-content:center;padding-bottom:2rem">
+            <span style="font-size:0.75rem;color:var(--color-text-muted);font-style:italic">{{ section.settings.image_alt | default: 'Lifestyle — corporate tee in action. Inkcora branded apparel' }}</span>
+          </div>
+        {%- endif -%}
+      </div>
+
+      {%- comment -%} Content {%- endcomment -%}
+      <div>
+        {%- if section.settings.tag != blank -%}
+          <div style="font-size:0.625rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-primary);margin-bottom:1.25rem">{{ section.settings.tag }}</div>
+        {%- endif -%}
+
+        <h2 style="font-family:var(--font-heading,serif);font-size:clamp(2rem,3vw,2.75rem);font-weight:700;color:var(--color-navy);line-height:1.15;margin-bottom:2rem">
+          {{ section.settings.title }}<br>
+          <em style="font-weight:400;color:var(--color-navy)">{{ section.settings.title_italic }}</em>
+        </h2>
+
+        <div style="display:flex;flex-direction:column;gap:1.5rem;margin-bottom:2.5rem">
+          {%- for block in section.blocks -%}
+            <div {{ block.shopify_attributes }}>
+              <div style="font-size:0.9375rem;font-weight:600;color:var(--color-primary);margin-bottom:0.25rem">{{ block.settings.title }}</div>
+              <div style="font-size:0.875rem;color:var(--color-text-muted);line-height:1.65">{{ block.settings.text }}</div>
+            </div>
+          {%- endfor -%}
+        </div>
+
+        <div style="display:flex;gap:1rem;flex-wrap:wrap;align-items:center">
+          {%- if section.settings.cta_primary_label != blank -%}
+            <a href="{{ section.settings.cta_primary_url }}" class="btn btn--primary">{{ section.settings.cta_primary_label }}</a>
+          {%- endif -%}
+          {%- if section.settings.cta_secondary_label != blank -%}
+            <a href="{{ section.settings.cta_secondary_url }}" style="font-size:0.875rem;font-weight:600;color:var(--color-navy);text-decoration:none;letter-spacing:0.02em">{{ section.settings.cta_secondary_label }}</a>
+          {%- endif -%}
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Socio de marca",
+  "tag": "section",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Imagen" },
+    { "type": "text", "id": "image_alt", "label": "Texto alternativo", "default": "Lifestyle — corporate tee in action. Inkcora branded apparel" },
+    { "type": "text", "id": "tag", "label": "Etiqueta", "default": "Why Inkcora" },
+    { "type": "text", "id": "title", "label": "Título (primera línea)", "default": "A brand partner," },
+    { "type": "text", "id": "title_italic", "label": "Título (segunda línea, cursiva)", "default": "not just a printer." },
+    { "type": "text", "id": "cta_primary_label", "label": "CTA primario — texto", "default": "Request a Quote" },
+    { "type": "url", "id": "cta_primary_url", "label": "CTA primario — enlace" },
+    { "type": "text", "id": "cta_secondary_label", "label": "CTA secundario — texto", "default": "Our Process →" },
+    { "type": "url", "id": "cta_secondary_url", "label": "CTA secundario — enlace" }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Característica",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Título", "default": "No Minimums, Ever" },
+        { "type": "textarea", "id": "text", "label": "Descripción", "default": "Order one item or ten thousand — the same quality, care, and turnaround every time." }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Socio de marca",
+      "blocks": [
+        { "type": "feature", "settings": { "title": "No Minimums, Ever", "text": "Order one item or ten thousand — the same quality, care, and turnaround every time." } },
+        { "type": "feature", "settings": { "title": "Free Digital Proof in 24 Hours", "text": "Every single order includes a detailed digital proof before production begins. You approve it. We print it." } },
+        { "type": "feature", "settings": { "title": "Four Print Technologies", "text": "We match the right technique to your design and fabric — sublimation, HTV, DTF, or screen print." } },
+        { "type": "feature", "settings": { "title": "Local & Accountable", "text": "Our team is in Beverly, MA. Real people, real care, real accountability on every order." } }
+      ]
+    }
+  ]
+}
+{% endschema %}
