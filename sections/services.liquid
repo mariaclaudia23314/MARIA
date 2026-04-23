@@ -1,5 +1,5 @@
 {% comment %}Inkcora — sections/services.liquid{% endcomment %}
-<section class="section{% if section.settings.color_scheme == 'dark' %} section--dark{% elsif section.settings.color_scheme == 'secondary' %} section--secondary{% endif %} scroll-reveal" id="{{ section.id }}">
+<section class="section{% if section.settings.color_scheme == 'dark' %} section--dark{% elsif section.settings.color_scheme == 'secondary' %} section--secondary{% endif %}" id="{{ section.id }}">
   <div class="page-width">
     {%- if section.settings.tag != blank or section.settings.title != blank -%}
       <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:1.5rem;margin-bottom:3.5rem">

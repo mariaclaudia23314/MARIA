@@ -1,5 +1,5 @@
 {% comment %}Inkcora — sections/rich-text.liquid{% endcomment %}
-<section class="section {% if section.settings.color_scheme == 'dark' %}section--dark{% elsif section.settings.color_scheme == 'secondary' %}section--secondary{% endif %} scroll-reveal">
+<section class="section {% if section.settings.color_scheme == 'dark' %}section--dark{% elsif section.settings.color_scheme == 'secondary' %}section--secondary{% endif %}">
   <div class="page-width text-center" style="max-width:640px">
     {%- if section.settings.tag != blank -%}
       <div class="section-tag {% if section.settings.color_scheme == 'dark' %}section-tag--light{% endif %}">{{ section.settings.tag }}</div>

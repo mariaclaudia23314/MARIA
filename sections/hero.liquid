@@ -1,5 +1,5 @@
 {% comment %}Inkcora — sections/hero.liquid{% endcomment %}
-<section class="hero scroll-reveal" style="{% if section.settings.overlay_color != blank %}--hero-overlay: {{ section.settings.overlay_color }};{% endif %}">
+<section class="hero" style="{% if section.settings.overlay_color != blank %}--hero-overlay: {{ section.settings.overlay_color }};{% endif %}">
   {%- if section.settings.background_image -%}
     <div style="position:absolute;inset:0;z-index:0">
       {%- assign img_opacity = section.settings.image_overlay_opacity | default: 0.6 -%}
