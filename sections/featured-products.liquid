@@ -21,14 +21,33 @@
       {%- for product in section.settings.collection.products limit: section.settings.products_to_show -%}
         {% render 'product-card', product: product %}
       {%- else -%}
+        {%- assign ph_titles  = "Classic Tee,Pullover Hoodie,Snapback Hat,Canvas Tote" | split: "," -%}
+        {%- assign ph_prices  = "from $22.99,from $38.99,from $22.99,from $14.99" | split: "," -%}
+        {%- assign ph_methods = "Sublimation · HTV,HTV · Screen Print,HTV · Embroidery,Screen Print · HTV" | split: "," -%}
+        {%- assign ph_labels  = "Classic Tee — product photo,Pullover Hoodie — product photo,Snapback Hat — product photo,Canvas Tote — product photo" | split: "," -%}
+        {%- assign ph_colors  = "fff,111827,c0392b,2563eb|111827,9ca3af,ffffff|111827,c0392b,ffffff|b5a07a,ffffff,111827" | split: "|" -%}
         {%- for i in (1..section.settings.products_to_show) -%}
-          <div class="product-card">
-            <div class="product-card__image-wrapper">
-              {{ 'product-1' | placeholder_svg_tag: 'product-card__image' }}
+          {%- assign idx = forloop.index0 -%}
+          {%- assign ph_title  = ph_titles[idx] -%}
+          {%- assign ph_price  = ph_prices[idx] -%}
+          {%- assign ph_method = ph_methods[idx] -%}
+          {%- assign ph_label  = ph_labels[idx] -%}
+          {%- assign ph_color  = ph_colors[idx] | split: "," -%}
+          <div class="product-card" style="display:flex;flex-direction:column">
+            <div style="position:relative;border-radius:var(--radius-card,4px);overflow:hidden;aspect-ratio:4/5;background-image:repeating-linear-gradient(135deg,#ddd8cf 0px,#ddd8cf 1px,#e8e3d9 1px,#e8e3d9 20px);display:flex;align-items:center;justify-content:center">
+              <span style="background:rgba(255,255,255,0.55);padding:0.375rem 0.875rem;font-size:0.6875rem;color:var(--color-text-muted);font-style:italic;border-radius:2px">{{ ph_label }}</span>
             </div>
-            <div class="product-card__info">
-              <div class="product-card__title">{{ 'onboarding.product_title' | t }}</div>
-              <div class="product-card__price">$00.00</div>
+            <div style="padding:0.875rem 0 0;flex:1;display:flex;flex-direction:column;gap:0.3rem">
+              <div style="display:flex;justify-content:space-between;align-items:baseline;gap:0.5rem">
+                <span style="font-size:0.9375rem;font-weight:600;color:var(--color-navy)">{{ ph_title }}</span>
+                <span style="font-size:0.9375rem;font-weight:500;color:var(--color-navy);white-space:nowrap;flex-shrink:0">{{ ph_price }}</span>
+              </div>
+              <div style="font-size:0.75rem;color:#6b9ec7;font-weight:500">{{ ph_method }}</div>
+              <div style="display:flex;align-items:center;gap:0.3rem;margin-top:0.25rem;flex-wrap:wrap">
+                {%- for swatch in ph_color -%}
+                  <div style="width:14px;height:14px;border-radius:50%;background:#{{ swatch }};border:1.5px solid {% if swatch == 'ffffff' %}#e5e7eb{% else %}transparent{% endif %};flex-shrink:0"></div>
+                {%- endfor -%}
+              </div>
             </div>
           </div>
         {%- endfor -%}
@@ -54,3 +73,4 @@
   "presets": [{ "name": "Productos destacados" }]
 }
 {% endschema %}
+
