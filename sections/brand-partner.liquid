@@ -11,8 +11,8 @@
             {{ section.settings.image | image_url: width: 800 | image_tag: loading: 'lazy', style: 'width:100%;aspect-ratio:4/5;object-fit:cover;display:block', alt: img_alt }}
           </div>
         {%- else -%}
-          <div style="border-radius:var(--radius-card,8px);overflow:hidden;background:#e8e2d8;aspect-ratio:4/5;display:flex;align-items:flex-end;justify-content:center;padding-bottom:2rem">
-            <span style="font-size:0.75rem;color:var(--color-text-muted);font-style:italic">{{ section.settings.image_alt | default: 'Lifestyle — corporate tee in action. Inkcora branded apparel' }}</span>
+          <div style="border-radius:var(--radius-card,8px);overflow:hidden;aspect-ratio:4/5;display:flex;align-items:center;justify-content:center;background-image:repeating-linear-gradient(135deg,#ddd8cf 0px,#ddd8cf 1px,#e8e3d9 1px,#e8e3d9 20px);position:relative">
+            <span style="background:rgba(255,255,255,0.55);padding:0.5rem 1rem;font-size:0.75rem;color:var(--color-text-muted);font-style:italic;border-radius:2px">{{ section.settings.image_alt | default: 'lifestyle — corporate team in custom Inkcora branded apparel' }}</span>
           </div>
         {%- endif -%}
       </div>
@@ -30,8 +30,8 @@
 
         <div style="display:flex;flex-direction:column;gap:1.5rem;margin-bottom:2.5rem">
           {%- for block in section.blocks -%}
-            <div {{ block.shopify_attributes }}>
-              <div style="font-size:0.9375rem;font-weight:600;color:var(--color-primary);margin-bottom:0.25rem">{{ block.settings.title }}</div>
+            <div {{ block.shopify_attributes }} style="padding-left:1.125rem;border-left:3px solid var(--color-primary)">
+              <div style="font-size:0.9375rem;font-weight:700;color:var(--color-navy);margin-bottom:0.25rem">{{ block.settings.title }}</div>
               <div style="font-size:0.875rem;color:var(--color-text-muted);line-height:1.65">{{ block.settings.text }}</div>
             </div>
           {%- endfor -%}
@@ -89,3 +89,4 @@
   ]
 }
 {% endschema %}
+
