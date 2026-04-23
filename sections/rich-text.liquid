@@ -1,5 +1,5 @@
 {% comment %}Inkcora — sections/rich-text.liquid{% endcomment %}
-<section class="section {% if section.settings.color_scheme == 'dark' %}section--dark{% elsif section.settings.color_scheme == 'secondary' %}section--secondary{% endif %}">
+<section class="section {% if section.settings.color_scheme == 'dark' %}section--dark{% elsif section.settings.color_scheme == 'secondary' %}section--secondary{% endif %}" style="border-top:2px solid var(--color-navy);border-bottom:2px solid var(--color-navy)">
   <div class="page-width text-center" style="max-width:640px">
     {%- if section.settings.tag != blank -%}
       <div class="section-tag {% if section.settings.color_scheme == 'dark' %}section-tag--light{% endif %}">{{ section.settings.tag }}</div>
@@ -36,3 +36,4 @@
   "presets": [{ "name": "Texto enriquecido con CTA" }]
 }
 {% endschema %}
+
