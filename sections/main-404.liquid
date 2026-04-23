@@ -1,0 +1,15 @@
+{% comment %}Inkcora — sections/main-404.liquid{% endcomment %}
+<section class="section" style="min-height:60vh;display:flex;align-items:center">
+  <div class="page-width text-center">
+    <div style="font-family:var(--font-heading);font-size:8rem;font-weight:600;color:var(--color-primary);line-height:1;margin-bottom:1.5rem;opacity:0.25">404</div>
+    <h1 class="h2" style="margin-bottom:1rem">Page Not Found</h1>
+    <p style="font-size:1rem;color:var(--color-text-muted);margin-bottom:2.5rem;max-width:400px;margin-left:auto;margin-right:auto">The page you're looking for doesn't exist. Let's get you back on track.</p>
+    <div style="display:flex;gap:0.875rem;justify-content:center;flex-wrap:wrap">
+      <a href="{{ routes.root_url }}" class="btn btn--primary">Back to Home</a>
+      <a href="{{ routes.all_products_collection_url }}" class="btn btn--secondary">Browse Products</a>
+    </div>
+  </div>
+</section>
+{% schema %}
+{ "name": "Página 404", "tag": "section", "settings": [] }
+{% endschema %}

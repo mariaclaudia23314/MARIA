@@ -1,0 +1,27 @@
+{% comment %}Inkcora — sections/product-recommendations.liquid{% endcomment %}
+{%- if section.settings.title != blank or recommendations.performed? -%}
+<div class="section section--secondary">
+  <div class="page-width">
+    {%- if section.settings.title != blank -%}
+      <h2 style="font-family:var(--font-heading,serif);font-size:1.5rem;font-weight:600;margin-bottom:2rem">{{ section.settings.title }}</h2>
+    {%- endif -%}
+    {%- if recommendations.performed? and recommendations.products_count > 0 -%}
+      <div class="grid grid--{{ section.settings.columns_desktop }}">
+        {%- for product in recommendations.products limit: section.settings.products_to_show -%}
+          {% render 'product-card', product: product %}
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+{%- endif -%}
+{% schema %}
+{
+  "name": "Productos relacionados",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Título", "default": "You May Also Like" },
+    { "type": "range", "id": "products_to_show", "min": 2, "max": 8, "step": 2, "default": 4, "label": "Productos a mostrar" },
+    { "type": "select", "id": "columns_desktop", "label": "Columnas", "options": [{"value":"3","label":"3"},{"value":"4","label":"4"}], "default": "4" }
+  ]
+}
+{% endschema %}

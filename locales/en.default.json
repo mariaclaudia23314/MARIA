@@ -1,0 +1,14 @@
+{
+  "general": {
+    "get_quote": "Get a Quote",
+    "search": { "search": "Search", "results": "Results for {{ terms }}" }
+  },
+  "accessibility": { "skip_to_text": "Skip to content" },
+  "sections": {
+    "header": { "cart_count": "Cart ({{ count }})" }
+  },
+  "onboarding": {
+    "product_title": "Example Product",
+    "no_content": "No content available"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "name": "header",
+  "sections": {
+    "announcement-bar": {
+      "type": "announcement-bar",
+      "settings": {
+        "show_announcement": true,
+        "text": "Free digital proof in 24h \u00b7 No minimums \u00b7 Ships in 3\u20135 days"
+      }
+    },
+    "header": {
+      "type": "header",
+      "settings": {
+        "menu": "main-menu",
+        "enable_language_selector": false,
+        "enable_country_selector": false
+      }
+    }
+  },
+  "order": ["announcement-bar", "header"]
+}

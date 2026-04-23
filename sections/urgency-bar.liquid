@@ -1,0 +1,33 @@
+{% comment %}Inkcora — sections/urgency-bar.liquid{% endcomment %}
+{%- if section.settings.show -%}
+<div style="background:{{ section.settings.background_color }};padding:0.625rem 1.5rem;text-align:center;border-bottom:1px solid rgba(255,255,255,0.08)">
+  <div style="max-width:var(--page-width,1280px);margin:0 auto;display:flex;gap:2rem;justify-content:center;align-items:center;flex-wrap:wrap">
+    {%- if section.settings.urgency_text != blank -%}
+      <span style="font-family:var(--font-body,sans-serif);font-size:0.75rem;font-weight:600;color:{{ section.settings.text_color }};letter-spacing:0.04em">{{ section.settings.urgency_text }}</span>
+    {%- endif -%}
+    {%- if section.settings.phone != blank -%}
+      <div style="width:1px;height:16px;background:rgba(255,255,255,0.15)"></div>
+      <a href="tel:{{ section.settings.phone | remove: ' ' | remove: '(' | remove: ')' | remove: '-' }}" style="font-family:var(--font-body,sans-serif);font-size:0.75rem;font-weight:600;color:{{ section.settings.text_color }};letter-spacing:0.04em">{{ section.settings.phone }}</a>
+    {%- endif -%}
+    {%- if section.settings.guarantee_text != blank -%}
+      <div style="width:1px;height:16px;background:rgba(255,255,255,0.15)"></div>
+      <span style="font-family:var(--font-body,sans-serif);font-size:0.75rem;font-weight:600;color:{{ section.settings.text_color }};letter-spacing:0.04em">{{ section.settings.guarantee_text }}</span>
+    {%- endif -%}
+  </div>
+</div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Barra de urgencia",
+  "settings": [
+    { "type": "checkbox", "id": "show", "label": "Mostrar", "default": true },
+    { "type": "text", "id": "urgency_text", "label": "Texto de urgencia", "default": "Order by Friday 3pm EST → Ships Monday" },
+    { "type": "text", "id": "phone", "label": "Teléfono", "default": "+1 (978) 624-8721" },
+    { "type": "text", "id": "guarantee_text", "label": "Texto de garantía", "default": "100% Satisfaction Guarantee" },
+    { "type": "color", "id": "background_color", "label": "Fondo", "default": "#0e1422" },
+    { "type": "color", "id": "text_color", "label": "Texto", "default": "#d6d9e8" }
+  ],
+  "presets": [{ "name": "Barra de urgencia" }]
+}
+{% endschema %}

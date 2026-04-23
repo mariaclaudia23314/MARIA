@@ -1,0 +1,56 @@
+{% comment %}Inkcora — sections/featured-products.liquid{% endcomment %}
+<section class="section scroll-reveal {% if section.settings.color_scheme == 'dark' %}section--dark{% elsif section.settings.color_scheme == 'secondary' %}section--secondary{% endif %}">
+  <div class="page-width">
+    {%- if section.settings.title != blank or section.settings.tag != blank -%}
+      <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:1rem;margin-bottom:3rem">
+        <div>
+          {%- if section.settings.tag != blank -%}
+            <div class="section-tag {% if section.settings.color_scheme == 'dark' %}section-tag--light{% endif %}">{{ section.settings.tag }}</div>
+          {%- endif -%}
+          {%- if section.settings.title != blank -%}
+            <h2 class="h2 {% if section.settings.color_scheme == 'dark' %}" style="color:#fff"{%- else -%}"{%- endif -%}>{{ section.settings.title }}</h2>
+          {%- endif -%}
+        </div>
+        {%- if section.settings.view_all_label != blank -%}
+          <a href="{{ section.settings.view_all_url | default: routes.all_products_collection_url }}" style="font-size:0.8125rem;font-weight:600;color:var(--color-primary);border-bottom:1.5px solid var(--color-primary);padding-bottom:2px">{{ section.settings.view_all_label }}</a>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <div class="grid grid--{{ section.settings.columns_desktop }} grid--auto">
+      {%- for product in section.settings.collection.products limit: section.settings.products_to_show -%}
+        {% render 'product-card', product: product %}
+      {%- else -%}
+        {%- for i in (1..section.settings.products_to_show) -%}
+          <div class="product-card">
+            <div class="product-card__image-wrapper">
+              {{ 'product-1' | placeholder_svg_tag: 'product-card__image' }}
+            </div>
+            <div class="product-card__info">
+              <div class="product-card__title">{{ 'onboarding.product_title' | t }}</div>
+              <div class="product-card__price">$00.00</div>
+            </div>
+          </div>
+        {%- endfor -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Productos destacados",
+  "tag": "section",
+  "settings": [
+    { "type": "text", "id": "tag", "label": "Etiqueta de sección" },
+    { "type": "text", "id": "title", "label": "Título", "default": "Custom Apparel & Accessories" },
+    { "type": "collection", "id": "collection", "label": "Colección" },
+    { "type": "range", "id": "products_to_show", "min": 2, "max": 12, "step": 2, "default": 4, "label": "Productos a mostrar" },
+    { "type": "select", "id": "columns_desktop", "label": "Columnas (desktop)", "options": [{"value":"3","label":"3"},{"value":"4","label":"4"}], "default": "4" },
+    { "type": "select", "id": "color_scheme", "label": "Esquema de color", "options": [{"value":"white","label":"Blanco"},{"value":"secondary","label":"Fondo secundario"},{"value":"dark","label":"Oscuro"}], "default": "white" },
+    { "type": "text", "id": "view_all_label", "label": "Texto 'Ver todo'", "default": "View All Products" },
+    { "type": "url", "id": "view_all_url", "label": "Enlace 'Ver todo'" }
+  ],
+  "presets": [{ "name": "Productos destacados" }]
+}
+{% endschema %}

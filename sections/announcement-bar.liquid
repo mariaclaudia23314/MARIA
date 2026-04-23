@@ -1,0 +1,25 @@
+{% comment %}Inkcora — sections/announcement-bar.liquid{% endcomment %}
+{%- if section.settings.show_announcement and section.settings.text != blank -%}
+<div class="announcement-bar" style="background:{{ section.settings.background_color }};color:{{ section.settings.text_color }}">
+  <p class="announcement-bar__text">
+    {%- if section.settings.link != blank -%}
+      <a href="{{ section.settings.link }}" style="color:inherit">{{ section.settings.text }}</a>
+    {%- else -%}
+      {{ section.settings.text }}
+    {%- endif -%}
+  </p>
+</div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Barra de anuncio",
+  "settings": [
+    { "type": "checkbox", "id": "show_announcement", "default": true, "label": "Mostrar barra" },
+    { "type": "text", "id": "text", "label": "Texto", "default": "Free digital proof in 24h · No minimums · Ships in 3–5 days · +1 (978) 624-8721" },
+    { "type": "url", "id": "link", "label": "Enlace (opcional)" },
+    { "type": "color", "id": "background_color", "label": "Color de fondo", "default": "#1a2038" },
+    { "type": "color", "id": "text_color", "label": "Color de texto", "default": "#ffffff" }
+  ]
+}
+{% endschema %}

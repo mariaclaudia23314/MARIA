@@ -1,0 +1,78 @@
+{% comment %}Inkcora — sections/footer.liquid{% endcomment %}
+<footer class="footer" role="contentinfo">
+  <div class="page-width">
+    <div class="grid grid--4" style="padding-bottom:3rem;border-bottom:1px solid rgba(255,255,255,0.07);margin-bottom:1.5rem">
+      {%- comment -%} Brand column {%- endcomment -%}
+      <div>
+        {%- if settings.logo -%}
+          <a href="{{ routes.root_url }}">
+            {{ settings.logo | image_url: width: 140 | image_tag: style: 'filter:brightness(0) invert(1);max-height:40px;width:auto;margin-bottom:1rem' }}
+          </a>
+        {%- else -%}
+          <div class="footer__logo">{{ shop.name }}</div>
+        {%- endif -%}
+        <p class="footer__tagline">{{ section.settings.footer_tagline | default: shop.description }}</p>
+        <div style="font-size:0.875rem;color:rgba(255,255,255,0.3);margin-bottom:0.5rem">{{ section.settings.store_city }}</div>
+        {%- if settings.store_phone != blank -%}
+          <a href="tel:{{ settings.store_phone | remove: ' ' }}" style="font-size:0.875rem;color:var(--color-primary)">{{ settings.store_phone }}</a>
+        {%- endif -%}
+        <div style="display:flex;gap:1rem;margin-top:1.25rem">
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'social_link' -%}
+              <a href="{{ block.settings.url }}" target="_blank" rel="noopener" class="footer__link">{{ block.settings.label }}</a>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      </div>
+
+      {%- for i in (1..3) -%}
+        {%- assign menu_id = 'footer_menu_' | append: i -%}
+        {%- assign menu_label = 'footer_menu_label_' | append: i -%}
+        {%- if section.settings[menu_id] != blank -%}
+          <div>
+            <div class="footer__col-label">{{ section.settings[menu_label] }}</div>
+            <nav>
+              {%- for link in linklists[section.settings[menu_id]].links -%}
+                <a href="{{ link.url }}" class="footer__link">{{ link.title }}</a>
+              {%- endfor -%}
+            </nav>
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+
+    <div class="footer__bottom">
+      <span>&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}. All rights reserved.</span>
+      <div style="display:flex;gap:1.5rem">
+        {%- if shop.privacy_policy != blank -%}
+          <a href="{{ shop.privacy_policy.url }}" class="footer__link">Privacy Policy</a>
+        {%- endif -%}
+        {%- if shop.terms_of_service != blank -%}
+          <a href="{{ shop.terms_of_service.url }}" class="footer__link">Terms of Service</a>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Pie de página",
+  "settings": [
+    { "type": "textarea", "id": "footer_tagline", "label": "Descripción de la tienda" },
+    { "type": "text", "id": "store_city", "label": "Ciudad", "default": "Beverly, MA" },
+    { "type": "link_list", "id": "footer_menu_1", "label": "Menú 1" },
+    { "type": "text", "id": "footer_menu_label_1", "label": "Etiqueta menú 1", "default": "Products" },
+    { "type": "link_list", "id": "footer_menu_2", "label": "Menú 2" },
+    { "type": "text", "id": "footer_menu_label_2", "label": "Etiqueta menú 2", "default": "Company" },
+    { "type": "link_list", "id": "footer_menu_3", "label": "Menú 3" },
+    { "type": "text", "id": "footer_menu_label_3", "label": "Etiqueta menú 3", "default": "Support" }
+  ],
+  "blocks": [
+    { "type": "social_link", "name": "Red social", "settings": [
+      { "type": "text", "id": "label", "label": "Nombre", "default": "Instagram" },
+      { "type": "url", "id": "url", "label": "URL" }
+    ]}
+  ]
+}
+{% endschema %}

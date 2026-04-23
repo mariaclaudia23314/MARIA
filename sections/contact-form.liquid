@@ -1,0 +1,111 @@
+{% comment %}Inkcora — sections/contact-form.liquid{% endcomment %}
+<section class="section">
+  <div class="page-width">
+    <div style="display:grid;grid-template-columns:1fr 360px;gap:3rem;align-items:start">
+      <div>
+        {%- if section.settings.title != blank -%}
+          <h1 class="h2" style="margin-bottom:1rem">{{ section.settings.title }}</h1>
+        {%- endif -%}
+        {%- if section.settings.text != blank -%}
+          <p style="font-size:1rem;color:var(--color-text-muted);line-height:1.75;margin-bottom:2.5rem">{{ section.settings.text }}</p>
+        {%- endif -%}
+
+        {% form 'contact' %}
+          {%- if form.posted_successfully? -%}
+            <div style="background:#f0fdf4;border:1px solid #86efac;border-radius:4px;padding:1.25rem 1.5rem;margin-bottom:1.5rem;color:#166534">
+              Your message has been sent. We will get back to you within 24 hours.
+            </div>
+          {%- endif -%}
+          {%- if form.errors -%}
+            <div style="background:#fef2f2;border:1px solid #fca5a5;border-radius:4px;padding:1.25rem 1.5rem;margin-bottom:1.5rem;color:#991b1b">
+              {{ form.errors | default_errors }}
+            </div>
+          {%- endif -%}
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-bottom:1.25rem">
+            <div class="field">
+              <label class="field__label" for="ContactForm-name">Full Name *</label>
+              <input class="field__input" type="text" id="ContactForm-name" name="contact[name]" value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}" autocomplete="name" required placeholder="Jane Smith">
+            </div>
+            <div class="field">
+              <label class="field__label" for="ContactForm-email">Business Email *</label>
+              <input class="field__input" type="email" id="ContactForm-email" name="contact[email]" value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}" autocomplete="email" required placeholder="jane@company.com">
+            </div>
+          </div>
+          <div class="field" style="margin-bottom:1.25rem">
+            <label class="field__label" for="ContactForm-phone">Phone</label>
+            <input class="field__input" type="tel" id="ContactForm-phone" name="contact[phone]" value="{{ form.phone }}" placeholder="+1 (555) 000-0000">
+          </div>
+          <div class="field" style="margin-bottom:1.25rem">
+            <label class="field__label" for="ContactForm-body">Message *</label>
+            <textarea class="field__textarea" id="ContactForm-body" name="contact[body]" required placeholder="Tell us about your project: product type, quantity, design ideas, deadline...">{{ form.body }}</textarea>
+          </div>
+          <button type="submit" class="btn btn--primary">Send Message</button>
+        {% endform %}
+      </div>
+
+      <!-- Sidebar -->
+      <div style="position:sticky;top:88px;display:flex;flex-direction:column;gap:1rem">
+        <div style="background:var(--color-navy);border-radius:4px;padding:1.75rem">
+          <span class="section-tag section-tag--light">What Happens Next</span>
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'timeline_item' -%}
+              <div style="display:flex;gap:0.875rem;margin-bottom:1.125rem" {{ block.shopify_attributes }}>
+                <div style="font-size:0.625rem;font-weight:700;color:var(--color-primary);letter-spacing:0.1em;text-transform:uppercase;min-width:68px;padding-top:2px">{{ block.settings.time }}</div>
+                <div style="font-size:0.8125rem;color:rgba(255,255,255,0.65);line-height:1.65">{{ block.settings.description }}</div>
+              </div>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+
+        <div style="background:white;border:1px solid var(--color-border);border-radius:4px;padding:1.25rem 1.5rem">
+          <div style="font-size:0.625rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-text-muted);margin-bottom:0.875rem">Direct Contact</div>
+          <div style="display:flex;flex-direction:column;gap:0.75rem">
+            <div>
+              <div style="font-size:0.75rem;color:var(--color-text-muted)">Email</div>
+              <a href="mailto:{{ shop.email }}" style="font-size:0.875rem;color:var(--color-primary);font-weight:500">{{ shop.email }}</a>
+            </div>
+            {%- if settings.store_phone != blank -%}
+              <div>
+                <div style="font-size:0.75rem;color:var(--color-text-muted)">Phone</div>
+                <a href="tel:{{ settings.store_phone | remove: ' ' }}" style="font-size:0.875rem;font-weight:500;color:var(--color-text)">{{ settings.store_phone }}</a>
+              </div>
+            {%- endif -%}
+            <div>
+              <div style="font-size:0.75rem;color:var(--color-text-muted)">Hours</div>
+              <div style="font-size:0.875rem;color:var(--color-text)">Mon–Fri · 9am–6pm EST</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Formulario de contacto",
+  "tag": "section",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Título", "default": "Request a Custom Quote." },
+    { "type": "textarea", "id": "text", "label": "Descripción", "default": "Fill in the details below and receive a full quote with a free digital proof within 24 hours." }
+  ],
+  "blocks": [{
+    "type": "timeline_item",
+    "name": "Paso del proceso",
+    "settings": [
+      { "type": "text", "id": "time", "label": "Tiempo", "default": "Within 1h" },
+      { "type": "text", "id": "description", "label": "Descripción", "default": "We confirm receipt of your request via email." }
+    ]
+  }],
+  "presets": [{
+    "name": "Formulario de contacto",
+    "blocks": [
+      { "type": "timeline_item", "settings": { "time": "Within 1h", "description": "We confirm receipt of your request via email." } },
+      { "type": "timeline_item", "settings": { "time": "Within 24h", "description": "A detailed quote + free digital proof arrives in your inbox." } },
+      { "type": "timeline_item", "settings": { "time": "On Approval", "description": "Production begins immediately upon your sign-off." } },
+      { "type": "timeline_item", "settings": { "time": "3-5 Days", "description": "Your branded merchandise ships to your door." } }
+    ]
+  }]
+}
+{% endschema %}

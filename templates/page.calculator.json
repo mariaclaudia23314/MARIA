@@ -1,0 +1,21 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "eyebrow": "Instant Pricing",
+        "title": "Custom Print",
+        "title_accent": "Price Calculator.",
+        "text": "Get an instant estimate for your custom order. No hidden fees. Final quote confirmed within 24 hours.",
+        "cta_primary_label": "Request a Quote",
+        "cta_primary_url": "/pages/contact",
+        "show_stats": false
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "settings": {}
+    }
+  },
+  "order": ["hero", "main"]
+}

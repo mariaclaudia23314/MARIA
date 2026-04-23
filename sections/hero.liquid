@@ -1,0 +1,95 @@
+{% comment %}Inkcora — sections/hero.liquid{% endcomment %}
+<section class="hero scroll-reveal" style="{% if section.settings.overlay_color != blank %}--hero-overlay: {{ section.settings.overlay_color }};{% endif %}">
+  {%- if section.settings.background_image -%}
+    <div style="position:absolute;inset:0;z-index:0">
+      {{ section.settings.background_image | image_url: width: 1920 | image_tag: loading: 'eager', fetchpriority: 'high', style: 'width:100%;height:100%;object-fit:cover;opacity:' | append: section.settings.image_overlay_opacity | append: ';' }}
+      <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.5),transparent 60%)"></div>
+    </div>
+  {%- else -%}
+    <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.025) 1px,transparent 1px);background-size:80px 80px;pointer-events:none;z-index:0"></div>
+    <div style="position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 68% 38%,{{ section.settings.glow_color | default: 'rgba(194,110,41,0.22)' }},transparent 65%);pointer-events:none;z-index:0"></div>
+  {%- endif -%}
+
+  <div class="page-width">
+    <div class="hero__content">
+      {%- if section.settings.eyebrow != blank -%}
+        <div class="hero__eyebrow">
+          <div class="hero__eyebrow-dot"></div>
+          {{ section.settings.eyebrow }}
+        </div>
+      {%- endif -%}
+
+      {%- if section.settings.title != blank -%}
+        <h1 class="hero__title">
+          {{ section.settings.title }}
+          {%- if section.settings.title_accent != blank -%}
+            <br><em>{{ section.settings.title_accent }}</em>
+          {%- endif -%}
+        </h1>
+      {%- endif -%}
+
+      {%- if section.settings.text != blank -%}
+        <p class="hero__text">{{ section.settings.text }}</p>
+      {%- endif -%}
+
+      <div class="hero__actions">
+        {%- if section.settings.cta_primary_label != blank -%}
+          <a href="{{ section.settings.cta_primary_url }}" class="btn btn--primary">
+            {{ section.settings.cta_primary_label }}
+          </a>
+        {%- endif -%}
+        {%- if section.settings.cta_secondary_label != blank -%}
+          <a href="{{ section.settings.cta_secondary_url }}" class="btn btn--secondary" style="border-color:rgba(255,255,255,0.35);color:rgba(255,255,255,0.8)">
+            {{ section.settings.cta_secondary_label }}
+          </a>
+        {%- endif -%}
+      </div>
+
+      {%- if section.settings.show_stats -%}
+        <div class="hero__stats">
+          {%- for i in (1..4) -%}
+            {%- assign stat_number = 'stat_' | append: i | append: '_number' -%}
+            {%- assign stat_label  = 'stat_' | append: i | append: '_label'  -%}
+            {%- if section.settings[stat_number] != blank -%}
+              <div>
+                <div class="hero__stat-number">{{ section.settings[stat_number] }}</div>
+                <div class="hero__stat-label">{{ section.settings[stat_label] }}</div>
+              </div>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero principal",
+  "tag": "section",
+  "class": "section-hero",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Texto eyebrow", "default": "Beverly, MA · B2B Custom Printing" },
+    { "type": "text", "id": "title", "label": "Título principal", "default": "We Strengthen" },
+    { "type": "text", "id": "title_accent", "label": "Título (acento cursivo)", "default": "Your Brand." },
+    { "type": "textarea", "id": "text", "label": "Texto descriptivo", "default": "Premium custom apparel for corporations, agencies, and growing teams." },
+    { "type": "text", "id": "cta_primary_label", "label": "CTA primario — texto", "default": "Browse Catalog" },
+    { "type": "url", "id": "cta_primary_url", "label": "CTA primario — enlace", "default": "/collections/all" },
+    { "type": "text", "id": "cta_secondary_label", "label": "CTA secundario — texto", "default": "Request a Quote" },
+    { "type": "url", "id": "cta_secondary_url", "label": "CTA secundario — enlace", "default": "/pages/contact" },
+    { "type": "image_picker", "id": "background_image", "label": "Imagen de fondo (opcional)" },
+    { "type": "range", "id": "image_overlay_opacity", "min": 0.1, "max": 1.0, "step": 0.1, "default": 0.6, "label": "Opacidad de imagen" },
+    { "type": "color", "id": "glow_color", "label": "Color del resplandor", "default": "rgba(194,110,41,0.22)" },
+    { "type": "checkbox", "id": "show_stats", "label": "Mostrar estadísticas", "default": true },
+    { "type": "text", "id": "stat_1_number", "label": "Estadística 1 — número", "default": "500+" },
+    { "type": "text", "id": "stat_1_label", "label": "Estadística 1 — etiqueta", "default": "Brands Served" },
+    { "type": "text", "id": "stat_2_number", "label": "Estadística 2 — número", "default": "4" },
+    { "type": "text", "id": "stat_2_label", "label": "Estadística 2 — etiqueta", "default": "Print Technologies" },
+    { "type": "text", "id": "stat_3_number", "label": "Estadística 3 — número", "default": "3-5 Days" },
+    { "type": "text", "id": "stat_3_label", "label": "Estadística 3 — etiqueta", "default": "Avg. Turnaround" },
+    { "type": "text", "id": "stat_4_number", "label": "Estadística 4 — número", "default": "24h" },
+    { "type": "text", "id": "stat_4_label", "label": "Estadística 4 — etiqueta", "default": "Free Proof Delivery" }
+  ],
+  "presets": [{ "name": "Hero principal" }]
+}
+{% endschema %}

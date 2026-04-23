@@ -1,0 +1,27 @@
+{% comment %}Inkcora — sections/trust-bar.liquid{% endcomment %}
+{%- if settings.show_trust_bar -%}
+<div class="trust-bar">
+  <div class="trust-bar__inner">
+    {%- for block in section.blocks -%}
+      <div class="trust-bar__item" {{ block.shopify_attributes }}>
+        <div class="trust-bar__dot"></div>
+        <span>{{ block.settings.text }}</span>
+      </div>
+    {%- else -%}
+      <div class="trust-bar__item"><div class="trust-bar__dot"></div><span>No Minimum Orders</span></div>
+      <div class="trust-bar__item"><div class="trust-bar__dot"></div><span>Free Digital Proof in 24h</span></div>
+      <div class="trust-bar__item"><div class="trust-bar__dot"></div><span>Ships in 3–5 Days</span></div>
+      <div class="trust-bar__item"><div class="trust-bar__dot"></div><span>Beverly, MA</span></div>
+      <div class="trust-bar__item"><div class="trust-bar__dot"></div><span>4 Print Technologies</span></div>
+      <div class="trust-bar__item"><div class="trust-bar__dot"></div><span>B2B Specialists</span></div>
+    {%- endfor -%}
+  </div>
+</div>
+{%- endif -%}
+{% schema %}
+{
+  "name": "Barra de confianza",
+  "blocks": [{ "type": "item", "name": "Item", "settings": [{ "type": "text", "id": "text", "label": "Texto", "default": "Free Digital Proof in 24h" }] }],
+  "presets": [{ "name": "Barra de confianza" }]
+}
+{% endschema %}

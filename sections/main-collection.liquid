@@ -1,0 +1,65 @@
+{% comment %}Inkcora — sections/main-collection.liquid{% endcomment %}
+<section class="section">
+  <div class="page-width">
+    <div style="display:grid;grid-template-columns:220px 1fr;gap:2.5rem;align-items:start">
+      {%- comment -%} Filters sidebar {%- endcomment -%}
+      <aside style="position:sticky;top:88px">
+        <div style="font-size:0.625rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--color-text-muted);margin-bottom:0.875rem">Filter By</div>
+        {%- if collection.filters.size > 0 -%}
+          {%- for filter in collection.filters -%}
+            <div style="margin-bottom:1.5rem">
+              <div style="font-size:0.625rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--color-text-muted);margin-bottom:0.625rem">{{ filter.label }}</div>
+              {%- case filter.type -%}
+                {%- when 'list' -%}
+                  {%- for filter_value in filter.values -%}
+                    <label style="display:flex;align-items:center;gap:0.625rem;cursor:pointer;padding:0.375rem 0.5rem;border-radius:3px;font-size:0.8125rem;color:{% if filter_value.active %}var(--color-primary){% else %}var(--color-text){% endif %}">
+                      <input type="checkbox" name="{{ filter_value.param_name }}" value="{{ filter_value.value }}" {% if filter_value.active %}checked{% endif %} onchange="this.form.submit()" style="accent-color:var(--color-primary)">
+                      {{ filter_value.label }} ({{ filter_value.count }})
+                    </label>
+                  {%- endfor -%}
+                {%- when 'price_range' -%}
+                  <div style="font-size:0.8125rem;color:var(--color-text-muted)">Price range filter</div>
+              {%- endcase -%}
+            </div>
+          {%- endfor -%}
+        {%- endif -%}
+      </aside>
+
+      {%- comment -%} Products grid {%- endcomment -%}
+      <div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:1px solid var(--color-border)">
+          <span style="font-size:0.8125rem;color:var(--color-text-muted)"><strong style="color:var(--color-text)">{{ collection.products_count }}</strong> products</span>
+          {%- if section.settings.enable_sorting -%}
+            <select onchange="location.search='sort_by='+this.value" style="border:1px solid var(--color-border);border-radius:var(--radius-button);padding:0.5rem 0.875rem;font-size:0.75rem;font-family:inherit;background:white;cursor:pointer">
+              {%- for option in collection.sort_options -%}
+                <option value="{{ option.value }}" {% if option.value == collection.sort_by %}selected{% endif %}>{{ option.name }}</option>
+              {%- endfor -%}
+            </select>
+          {%- endif -%}
+        </div>
+        <div class="grid grid--{{ section.settings.columns_desktop }}">
+          {%- paginate collection.products by section.settings.products_per_page -%}
+            {%- for product in collection.products -%}
+              {% render 'product-card', product: product %}
+            {%- else -%}
+              <p style="font-size:1rem;color:var(--color-text-muted);grid-column:1/-1;padding:3rem 0">No products found.</p>
+            {%- endfor -%}
+          {%- endpaginate -%}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Colección principal",
+  "tag": "section",
+  "settings": [
+    { "type": "range", "id": "products_per_page", "min": 8, "max": 48, "step": 4, "default": 24, "label": "Productos por página" },
+    { "type": "select", "id": "columns_desktop", "label": "Columnas (desktop)", "options": [{"value":"3","label":"3"},{"value":"4","label":"4"}], "default": "4" },
+    { "type": "checkbox", "id": "enable_sorting", "label": "Activar ordenamiento", "default": true },
+    { "type": "checkbox", "id": "enable_filtering", "label": "Activar filtros", "default": true }
+  ]
+}
+{% endschema %}

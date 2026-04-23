@@ -1,0 +1,44 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "eyebrow": "Process",
+        "title": "From Idea to",
+        "title_accent": "Doorstep.",
+        "text": "We have eliminated the friction from custom printing. No confusing forms, no hidden fees.",
+        "cta_primary_label": "Request a Quote",
+        "cta_primary_url": "/pages/contact",
+        "show_stats": false
+      }
+    },
+    "services": {
+      "type": "services",
+      "settings": {
+        "tag": "Our Capabilities",
+        "title": "Four print technologies. One trusted partner.",
+        "color_scheme": "dark"
+      },
+      "blocks": {
+        "s1": { "type": "service", "settings": { "title": "Sublimation", "description": "Full-color, all-over prints fused permanently into polyester fibers.", "tag": "Epson SureColor F170" } },
+        "s2": { "type": "service", "settings": { "title": "HTV Vinyl", "description": "Precise logos, text, and layered designs on any fabric or color.", "tag": "Siser EasyWeed" } },
+        "s3": { "type": "service", "settings": { "title": "DTF Transfer", "description": "Full-color digital prints on cotton and blends. No minimums.", "tag": "DTF Powder Method" } },
+        "s4": { "type": "service", "settings": { "title": "Screen Printing", "description": "Bold, durable, cost-effective at scale.", "tag": "Rapid Cure Inks" } }
+      },
+      "block_order": ["s1","s2","s3","s4"]
+    },
+    "cta": {
+      "type": "rich-text",
+      "settings": {
+        "title": "Ready to begin?",
+        "text": "Start with a free quote and receive your digital proof within 24 hours.",
+        "cta_label": "Request a Quote",
+        "cta_url": "/pages/contact",
+        "cta_secondary_label": "Browse Products",
+        "cta_secondary_url": "/collections/all",
+        "color_scheme": "white"
+      }
+    }
+  },
+  "order": ["hero", "services", "cta"]
+}

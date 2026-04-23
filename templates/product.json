@@ -1,0 +1,21 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "settings": {
+        "show_vendor": false,
+        "show_quantity_selector": true,
+        "show_dynamic_checkout": true
+      }
+    },
+    "product-recommendations": {
+      "type": "product-recommendations",
+      "settings": {
+        "title": "You May Also Like",
+        "products_to_show": 4,
+        "columns_desktop": 4
+      }
+    }
+  },
+  "order": ["main", "product-recommendations"]
+}

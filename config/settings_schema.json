@@ -1,0 +1,519 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Inkcora",
+    "theme_author": "Inkcora",
+    "theme_version": "1.0.0",
+    "theme_documentation_url": "https://www.inkcora.com",
+    "theme_support_url": "https://www.inkcora.com/contact"
+  },
+  {
+    "name": "Logo y favicon",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "Logo"
+      },
+      {
+        "type": "range",
+        "id": "logo_width",
+        "min": 50,
+        "max": 300,
+        "step": 10,
+        "default": 140,
+        "unit": "px",
+        "label": "Ancho del logo"
+      },
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Favicon"
+      }
+    ]
+  },
+  {
+    "name": "Colores",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Colores principales"
+      },
+      {
+        "type": "color",
+        "id": "color_primary",
+        "label": "Color de acento (botones, enlaces)",
+        "default": "#c26e29"
+      },
+      {
+        "type": "color",
+        "id": "color_navy",
+        "label": "Color oscuro (nav, hero, secciones)",
+        "default": "#1a2038"
+      },
+      {
+        "type": "color",
+        "id": "color_background",
+        "label": "Fondo principal",
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "color_background_secondary",
+        "label": "Fondo secundario (tarjetas, secciones alternas)",
+        "default": "#f8f6f2"
+      },
+      {
+        "type": "header",
+        "content": "Colores de texto"
+      },
+      {
+        "type": "color",
+        "id": "color_text",
+        "label": "Texto principal",
+        "default": "#111827"
+      },
+      {
+        "type": "color",
+        "id": "color_text_muted",
+        "label": "Texto secundario",
+        "default": "#6b7280"
+      },
+      {
+        "type": "color",
+        "id": "color_border",
+        "label": "Color de bordes",
+        "default": "#e5e7eb"
+      }
+    ]
+  },
+  {
+    "name": "Tipografía",
+    "settings": [
+      {
+        "type": "font_picker",
+        "id": "type_heading_font",
+        "label": "Fuente de títulos",
+        "default": "cormorant_garamond_n6"
+      },
+      {
+        "type": "font_picker",
+        "id": "type_body_font",
+        "label": "Fuente de texto",
+        "default": "dm_sans_n4"
+      },
+      {
+        "type": "range",
+        "id": "heading_scale",
+        "min": 70,
+        "max": 150,
+        "step": 5,
+        "default": 100,
+        "unit": "%",
+        "label": "Escala de títulos"
+      },
+      {
+        "type": "range",
+        "id": "body_scale",
+        "min": 100,
+        "max": 130,
+        "step": 2,
+        "default": 100,
+        "unit": "%",
+        "label": "Escala de texto"
+      }
+    ]
+  },
+  {
+    "name": "Diseño de página",
+    "settings": [
+      {
+        "type": "range",
+        "id": "page_width",
+        "min": 1000,
+        "max": 1600,
+        "step": 100,
+        "default": 1280,
+        "unit": "px",
+        "label": "Ancho máximo de página"
+      },
+      {
+        "type": "range",
+        "id": "spacing_sections",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "default": 60,
+        "unit": "px",
+        "label": "Espacio entre secciones"
+      },
+      {
+        "type": "checkbox",
+        "id": "sections_always_full_width",
+        "label": "Secciones siempre a ancho completo",
+        "default": false
+      }
+    ]
+  },
+  {
+    "name": "Animaciones",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "animations_reveal_on_scroll",
+        "label": "Revelar elementos al hacer scroll",
+        "default": true
+      },
+      {
+        "type": "select",
+        "id": "animations_hover_elements",
+        "label": "Animación al pasar el cursor",
+        "options": [
+          { "value": "none", "label": "Ninguna" },
+          { "value": "lift", "label": "Elevar" },
+          { "value": "scale", "label": "Escalar" }
+        ],
+        "default": "lift"
+      }
+    ]
+  },
+  {
+    "name": "Insignias",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "badge_show_new",
+        "label": "Mostrar insignia 'Nuevo'",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "badge_show_sale",
+        "label": "Mostrar insignia 'Oferta'",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "badge_show_best_seller",
+        "label": "Mostrar insignia 'Más vendido'",
+        "default": true
+      }
+    ]
+  },
+  {
+    "name": "Botones",
+    "settings": [
+      {
+        "type": "range",
+        "id": "button_border_radius",
+        "min": 0,
+        "max": 50,
+        "step": 2,
+        "default": 2,
+        "unit": "px",
+        "label": "Radio de esquinas (botones)"
+      },
+      {
+        "type": "select",
+        "id": "button_style",
+        "label": "Estilo de botón principal",
+        "options": [
+          { "value": "solid", "label": "Sólido" },
+          { "value": "outline", "label": "Contorno" }
+        ],
+        "default": "solid"
+      },
+      {
+        "type": "checkbox",
+        "id": "button_uppercase",
+        "label": "Texto en mayúsculas",
+        "default": true
+      }
+    ]
+  },
+  {
+    "name": "Carrito",
+    "settings": [
+      {
+        "type": "select",
+        "id": "cart_type",
+        "label": "Tipo de carrito",
+        "options": [
+          { "value": "drawer", "label": "Cajón lateral" },
+          { "value": "page", "label": "Página completa" }
+        ],
+        "default": "drawer"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_cart_note",
+        "label": "Permitir notas en el carrito",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "cart_show_vendor",
+        "label": "Mostrar proveedor",
+        "default": false
+      }
+    ]
+  },
+  {
+    "name": "Cajones",
+    "settings": [
+      {
+        "type": "range",
+        "id": "drawer_width",
+        "min": 280,
+        "max": 500,
+        "step": 20,
+        "default": 380,
+        "unit": "px",
+        "label": "Ancho del cajón lateral"
+      }
+    ]
+  },
+  {
+    "name": "Íconos",
+    "settings": [
+      {
+        "type": "select",
+        "id": "icon_style",
+        "label": "Estilo de íconos",
+        "options": [
+          { "value": "outline", "label": "Contorno" },
+          { "value": "filled", "label": "Relleno" }
+        ],
+        "default": "outline"
+      }
+    ]
+  },
+  {
+    "name": "Campos de entrada",
+    "settings": [
+      {
+        "type": "range",
+        "id": "input_border_radius",
+        "min": 0,
+        "max": 20,
+        "step": 2,
+        "default": 2,
+        "unit": "px",
+        "label": "Radio de esquinas (campos)"
+      },
+      {
+        "type": "checkbox",
+        "id": "input_show_labels",
+        "label": "Mostrar etiquetas flotantes",
+        "default": true
+      }
+    ]
+  },
+  {
+    "name": "Popovers y modales",
+    "settings": [
+      {
+        "type": "range",
+        "id": "modal_border_radius",
+        "min": 0,
+        "max": 30,
+        "step": 2,
+        "default": 8,
+        "unit": "px",
+        "label": "Radio de esquinas (modales)"
+      }
+    ]
+  },
+  {
+    "name": "Precios",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "price_show_original",
+        "label": "Mostrar precio original tachado",
+        "default": true
+      },
+      {
+        "type": "color",
+        "id": "price_sale_color",
+        "label": "Color de precio de oferta",
+        "default": "#c26e29"
+      },
+      {
+        "type": "checkbox",
+        "id": "price_show_currency",
+        "label": "Mostrar código de moneda",
+        "default": false
+      }
+    ]
+  },
+  {
+    "name": "Tarjetas de producto",
+    "settings": [
+      {
+        "type": "select",
+        "id": "card_style",
+        "label": "Estilo de tarjeta",
+        "options": [
+          { "value": "standard", "label": "Estándar" },
+          { "value": "card", "label": "Con sombra" },
+          { "value": "none", "label": "Sin borde" }
+        ],
+        "default": "standard"
+      },
+      {
+        "type": "range",
+        "id": "card_border_radius",
+        "min": 0,
+        "max": 20,
+        "step": 2,
+        "default": 4,
+        "unit": "px",
+        "label": "Radio de esquinas (tarjetas)"
+      },
+      {
+        "type": "select",
+        "id": "card_image_ratio",
+        "label": "Proporción de imagen",
+        "options": [
+          { "value": "adapt", "label": "Adaptable" },
+          { "value": "portrait", "label": "Retrato (4:5)" },
+          { "value": "square", "label": "Cuadrado (1:1)" }
+        ],
+        "default": "portrait"
+      },
+      {
+        "type": "checkbox",
+        "id": "card_show_vendor",
+        "label": "Mostrar proveedor",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "card_show_color_swatches",
+        "label": "Mostrar muestras de color",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "card_quick_add",
+        "label": "Activar 'Añadir rápido'",
+        "default": true
+      }
+    ]
+  },
+  {
+    "name": "Búsqueda",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "predictive_search_enabled",
+        "label": "Activar búsqueda predictiva",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "search_show_products",
+        "label": "Mostrar productos en búsqueda",
+        "default": true
+      }
+    ]
+  },
+  {
+    "name": "Muestrario",
+    "settings": [
+      {
+        "type": "select",
+        "id": "swatch_shape",
+        "label": "Forma de muestras de color",
+        "options": [
+          { "value": "circle", "label": "Círculo" },
+          { "value": "square", "label": "Cuadrado" }
+        ],
+        "default": "circle"
+      },
+      {
+        "type": "range",
+        "id": "swatch_size",
+        "min": 10,
+        "max": 32,
+        "step": 2,
+        "default": 14,
+        "unit": "px",
+        "label": "Tamaño de muestras"
+      }
+    ]
+  },
+  {
+    "name": "Selectores de variantes",
+    "settings": [
+      {
+        "type": "select",
+        "id": "variant_pills_style",
+        "label": "Estilo de selector de variantes",
+        "options": [
+          { "value": "pills", "label": "Pastillas" },
+          { "value": "dropdown", "label": "Desplegable" }
+        ],
+        "default": "pills"
+      }
+    ]
+  },
+  {
+    "name": "CSS personalizado",
+    "settings": [
+      {
+        "type": "textarea",
+        "id": "custom_css",
+        "label": "CSS personalizado",
+        "info": "Agrega estilos CSS personalizados aquí. Se aplican en todo el sitio."
+      }
+    ]
+  },
+  {
+    "name": "Estilo del tema",
+    "settings": [
+      {
+        "type": "select",
+        "id": "theme_style",
+        "label": "Estilo visual del tema",
+        "options": [
+          { "value": "classic", "label": "Clásico (Blanco + Navy)" },
+          { "value": "warm", "label": "Cálido (Crema + Ámbar)" },
+          { "value": "bold", "label": "Audaz (Navy + Dorado)" }
+        ],
+        "default": "classic"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_trust_bar",
+        "label": "Mostrar barra de confianza (trust bar)",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_announcement_bar",
+        "label": "Mostrar barra de anuncio",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "announcement_text",
+        "label": "Texto del anuncio",
+        "default": "Free digital proof in 24h · No minimums · Ships in 3-5 days"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_phone_in_header",
+        "label": "Mostrar teléfono en el encabezado",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "store_phone",
+        "label": "Número de teléfono",
+        "default": "+1 (978) 624-8721"
+      }
+    ]
+  }
+]

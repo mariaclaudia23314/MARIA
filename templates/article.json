@@ -1,0 +1,24 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-article",
+      "settings": {
+        "show_date": true,
+        "show_author": false,
+        "show_share_buttons": true,
+        "show_back_button": true
+      }
+    },
+    "article-recommendations": {
+      "type": "rich-text",
+      "settings": {
+        "title": "Ready to write your own success story?",
+        "text": "No minimums. Free proof in 24h. Ships in 3-5 days.",
+        "cta_label": "Request a Quote",
+        "cta_url": "/pages/contact",
+        "color_scheme": "dark"
+      }
+    }
+  },
+  "order": ["main", "article-recommendations"]
+}

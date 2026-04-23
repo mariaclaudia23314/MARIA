@@ -1,0 +1,61 @@
+{% comment %}Inkcora — snippets/product-card.liquid{% endcomment %}
+<div class="product-card" data-product-id="{{ product.id }}">
+  <a href="{{ product.url }}" class="product-card__image-wrapper">
+    {%- if product.featured_image -%}
+      {{ product.featured_image | image_url: width: 600 | image_tag: class: 'product-card__image', loading: 'lazy', alt: product.featured_image.alt | default: product.title }}
+    {%- else -%}
+      {{ 'product-1' | placeholder_svg_tag: 'product-card__image' }}
+    {%- endif -%}
+
+    {%- if product.metafields.custom.badge != blank -%}
+      <div class="product-card__badge">{{ product.metafields.custom.badge }}</div>
+    {%- elsif product.tags contains 'best-seller' -%}
+      <div class="product-card__badge">Best Seller</div>
+    {%- elsif product.tags contains 'new' -%}
+      <div class="product-card__badge">New</div>
+    {%- endif -%}
+
+    {%- if settings.card_quick_add -%}
+      <div class="product-card__action">
+        <span>Customize Now</span>
+        <span>&#8594;</span>
+      </div>
+    {%- endif -%}
+  </a>
+
+  <div class="product-card__info">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px">
+      <span class="product-card__title">{{ product.title }}</span>
+      <span class="product-card__price">
+        {%- if product.compare_at_price > product.price -%}
+          <span class="price--sale">{{ product.price | money }}</span>
+          <span class="price--original">{{ product.compare_at_price | money }}</span>
+        {%- else -%}
+          {{ product.price | money }}
+        {%- endif -%}
+      </span>
+    </div>
+
+    {%- if product.metafields.custom.print_methods != blank -%}
+      <div class="product-card__subtitle">{{ product.metafields.custom.print_methods }}</div>
+    {%- endif -%}
+
+    {%- if settings.card_show_color_swatches -%}
+      {%- assign color_option = product.options_by_name['Color'] | default: product.options_by_name['Colour'] -%}
+      {%- if color_option -%}
+        <div class="product-card__swatches">
+          {%- for value in color_option.values limit: 10 -%}
+            <div class="product-card__swatch"
+              style="background:{{ value | handle | replace: '-', '' | downcase }}"
+              title="{{ value }}"
+              data-swatch-image="{{ product.images | where: 'alt', value | map: 'src' | first | image_url: width: 600 }}">
+            </div>
+          {%- endfor -%}
+          {%- if color_option.values.size > 10 -%}
+            <span style="font-size:10px;color:var(--color-text-muted)">+{{ color_option.values.size | minus: 10 }}</span>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+    {%- endif -%}
+  </div>
+</div>

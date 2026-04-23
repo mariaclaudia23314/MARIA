@@ -1,0 +1,67 @@
+{% comment %}Inkcora — sections/services.liquid{% endcomment %}
+<section class="section{% if section.settings.color_scheme == 'dark' %} section--dark{% elsif section.settings.color_scheme == 'secondary' %} section--secondary{% endif %} scroll-reveal" id="{{ section.id }}">
+  <div class="page-width">
+    {%- if section.settings.tag != blank or section.settings.title != blank -%}
+      <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:1.5rem;margin-bottom:3.5rem">
+        <div>
+          {%- if section.settings.tag != blank -%}
+            <span class="section-tag {% if section.settings.color_scheme == 'dark' %}section-tag--light{% endif %}">{{ section.settings.tag }}</span>
+          {%- endif -%}
+          {%- if section.settings.title != blank -%}
+            <h2 class="h2{% if section.settings.color_scheme == 'dark' %}" style="color:white{% endif %}">{{ section.settings.title }}</h2>
+          {%- endif -%}
+        </div>
+        {%- if section.settings.cta_label != blank -%}
+          <a href="{{ section.settings.cta_url }}" class="btn btn--secondary{% if section.settings.color_scheme == 'dark' %}" style="border-color:rgba(255,255,255,0.3);color:rgba(255,255,255,0.8){% endif %}">{{ section.settings.cta_label }}</a>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:2px;background:rgba(255,255,255,0.07);border-radius:4px;overflow:hidden">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'service' -%}
+          <div style="background:var(--color-navy);padding:2.5rem 2rem;transition:background 0.25s" onmouseover="this.style.background='var(--color-navy-mid)'" onmouseout="this.style.background='var(--color-navy)'" {{ block.shopify_attributes }}>
+            <div style="font-family:var(--font-heading,serif);font-size:3.5rem;font-weight:600;color:rgba(255,255,255,0.22);line-height:1;margin-bottom:1.25rem;letter-spacing:-0.02em">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</div>
+            <div style="font-family:var(--font-heading,serif);font-size:1.375rem;font-weight:600;color:white;margin-bottom:0.75rem">{{ block.settings.title }}</div>
+            <div style="font-size:0.8125rem;color:rgba(255,255,255,0.65);line-height:1.8;margin-bottom:1.125rem">{{ block.settings.description }}</div>
+            {%- if block.settings.tag != blank -%}
+              <span style="display:inline-block;font-size:0.5625rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-primary);border:1px solid rgba(255,255,255,0.2);padding:0.3125rem 0.75rem;border-radius:2px">{{ block.settings.tag }}</span>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Servicios / Técnicas",
+  "tag": "section",
+  "settings": [
+    { "type": "text", "id": "tag", "label": "Etiqueta", "default": "Our Capabilities" },
+    { "type": "text", "id": "title", "label": "Título", "default": "Four technologies. One partner." },
+    { "type": "text", "id": "cta_label", "label": "Texto CTA" },
+    { "type": "url", "id": "cta_url", "label": "Enlace CTA" },
+    { "type": "select", "id": "color_scheme", "label": "Esquema", "options": [{"value":"white","label":"Blanco"},{"value":"secondary","label":"Secundario"},{"value":"dark","label":"Oscuro"}], "default": "dark" }
+  ],
+  "blocks": [{
+    "type": "service",
+    "name": "Servicio",
+    "settings": [
+      { "type": "text", "id": "title", "label": "Nombre", "default": "Sublimación" },
+      { "type": "textarea", "id": "description", "label": "Descripción", "default": "Full-color, all-over prints fused permanently into polyester fibers." },
+      { "type": "text", "id": "tag", "label": "Equipo/Método", "default": "Epson SureColor F170" }
+    ]
+  }],
+  "presets": [{
+    "name": "Servicios",
+    "blocks": [
+      { "type": "service", "settings": { "title": "Sublimación", "description": "Full-color, all-over prints fused permanently into polyester fibers. Vibrant, wash-proof results.", "tag": "Epson SureColor F170" } },
+      { "type": "service", "settings": { "title": "HTV Vinyl", "description": "Heat-transfer vinyl for precise logos, text, and layered designs on any fabric or color.", "tag": "Siser EasyWeed" } },
+      { "type": "service", "settings": { "title": "DTF Transfer", "description": "Full-color digital transfers onto cotton and blends with no minimum run sizes.", "tag": "DTF Powder Method" } },
+      { "type": "service", "settings": { "title": "Screen Printing", "description": "Bold, durable, and cost-effective at scale. Premium Rapid Cure inks.", "tag": "Rapid Cure Inks" } }
+    ]
+  }]
+}
+{% endschema %}

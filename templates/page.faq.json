@@ -1,0 +1,21 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "eyebrow": "Support",
+        "title": "Frequently",
+        "title_accent": "Asked Questions.",
+        "text": "Everything you need to know about ordering with Inkcora.",
+        "cta_primary_label": "Contact Us",
+        "cta_primary_url": "/pages/contact",
+        "show_stats": false
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "settings": {}
+    }
+  },
+  "order": ["hero", "main"]
+}

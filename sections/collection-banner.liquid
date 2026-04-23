@@ -1,0 +1,31 @@
+{% comment %}Inkcora — sections/collection-banner.liquid{% endcomment %}
+{%- if collection.description != blank or section.settings.show_collection_image and collection.image -%}
+<div style="background:var(--color-navy);padding:3rem 2rem">
+  <div class="page-width">
+    {%- if section.settings.show_collection_image and collection.image -%}
+      <div style="margin-bottom:1.5rem">
+        {{ collection.image | image_url: width: 1200 | image_tag: style: 'width:100%;max-height:300px;object-fit:cover;border-radius:4px', loading: 'eager' }}
+      </div>
+    {%- endif -%}
+    <h1 class="h2" style="color:white;margin-bottom:{% if collection.description != blank and section.settings.show_collection_description %}0.75rem{% else %}0{% endif %}">{{ collection.title }}</h1>
+    {%- if collection.description != blank and section.settings.show_collection_description -%}
+      <div style="font-size:1rem;color:rgba(255,255,255,0.65);line-height:1.75;max-width:600px">{{ collection.description }}</div>
+    {%- endif -%}
+  </div>
+</div>
+{%- else -%}
+<div style="background:var(--color-navy);padding:2.5rem 2rem">
+  <div class="page-width">
+    <h1 class="h2" style="color:white">{{ collection.title }}</h1>
+  </div>
+</div>
+{%- endif -%}
+{% schema %}
+{
+  "name": "Banner de colección",
+  "settings": [
+    { "type": "checkbox", "id": "show_collection_description", "default": true, "label": "Mostrar descripción" },
+    { "type": "checkbox", "id": "show_collection_image", "default": false, "label": "Mostrar imagen de colección" }
+  ]
+}
+{% endschema %}

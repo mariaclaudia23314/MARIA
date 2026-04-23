@@ -1,0 +1,66 @@
+{% comment %}Inkcora — sections/testimonials.liquid{% endcomment %}
+<section class="section{% if section.settings.color_scheme == 'dark' %} section--dark{% elsif section.settings.color_scheme == 'secondary' %} section--secondary{% endif %} scroll-reveal" id="{{ section.id }}">
+  <div class="page-width">
+    {%- if section.settings.tag != blank or section.settings.title != blank -%}
+      <div style="text-align:center;margin-bottom:3.5rem">
+        {%- if section.settings.tag != blank -%}
+          <span class="section-tag {% if section.settings.color_scheme == 'dark' %}section-tag--light{% endif %}">{{ section.settings.tag }}</span>
+        {%- endif -%}
+        {%- if section.settings.title != blank -%}
+          <h2 class="h2{% if section.settings.color_scheme == 'dark' %}" style="color:white{% endif %}">{{ section.settings.title }}</h2>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2px;background:var(--color-border);border-radius:4px;overflow:hidden">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'testimonial' -%}
+          <div class="testimonial-card" style="background:var(--color-background)" {{ block.shopify_attributes }}>
+            <div class="testimonial-card__stars">
+              {%- for i in (1..5) -%}★{%- endfor -%}
+            </div>
+            {%- if block.settings.quote != blank -%}
+              <p class="testimonial-card__quote">"{{ block.settings.quote }}"</p>
+            {%- endif -%}
+            <div class="testimonial-card__author">
+              <div class="testimonial-card__avatar">{{ block.settings.name | slice: 0 }}</div>
+              <div>
+                <div class="testimonial-card__name">{{ block.settings.name }}</div>
+                <div class="testimonial-card__role">{{ block.settings.role }}</div>
+              </div>
+            </div>
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Testimoniales",
+  "tag": "section",
+  "settings": [
+    { "type": "text", "id": "tag", "label": "Etiqueta", "default": "Client Results" },
+    { "type": "text", "id": "title", "label": "Título", "default": "Trusted by brands across New England." },
+    { "type": "select", "id": "color_scheme", "label": "Esquema", "options": [{"value":"white","label":"Blanco"},{"value":"secondary","label":"Secundario"},{"value":"dark","label":"Oscuro"}], "default": "white" }
+  ],
+  "blocks": [{
+    "type": "testimonial",
+    "name": "Testimonio",
+    "settings": [
+      { "type": "textarea", "id": "quote", "label": "Cita" },
+      { "type": "text", "id": "name", "label": "Nombre", "default": "Jane Smith" },
+      { "type": "text", "id": "role", "label": "Cargo y empresa", "default": "CEO, Acme Corp" }
+    ]
+  }],
+  "presets": [{
+    "name": "Testimoniales",
+    "blocks": [
+      { "type": "testimonial", "settings": { "quote": "Inkcora transformed how we present our brand. The quality of the printed hoodies was exceptional — clients noticed immediately.", "name": "Sarah Mitchell", "role": "Brand Director, Bloom Studio" } },
+      { "type": "testimonial", "settings": { "quote": "From proof to delivery in four days. No other vendor has matched that turnaround without sacrificing quality.", "name": "Carlos Delgado", "role": "Marketing Director, Wavetek Corp" } },
+      { "type": "testimonial", "settings": { "quote": "No minimums and a free proof eliminated the risk entirely. Exceptional service.", "name": "Priya Krishnan", "role": "CEO, The Spice Shelf" } }
+    ]
+  }]
+}
+{% endschema %}

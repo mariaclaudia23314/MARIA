@@ -1,0 +1,27 @@
+{% comment %}Inkcora — sections/main-search.liquid{% endcomment %}
+<section class="section">
+  <div class="page-width">
+    <h1 class="h2" style="margin-bottom:2rem">Search</h1>
+    <form action="{{ routes.search_url }}" method="get" style="display:flex;gap:0.75rem;margin-bottom:3rem;max-width:560px">
+      <input type="search" name="q" value="{{ search.terms | escape }}" placeholder="Search products..." class="field__input" style="flex:1">
+      <button type="submit" class="btn btn--primary">Search</button>
+    </form>
+    {%- if search.performed -%}
+      {%- if search.results_count == 0 -%}
+        <p style="color:var(--color-text-muted)">No results for "{{ search.terms }}".</p>
+      {%- else -%}
+        <p style="font-size:0.875rem;color:var(--color-text-muted);margin-bottom:1.5rem">{{ search.results_count }} results for "{{ search.terms }}"</p>
+        <div class="grid grid--{{ section.settings.columns_desktop }}">
+          {%- for item in search.results -%}
+            {%- if item.object_type == 'product' -%}
+              {% render 'product-card', product: item %}
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    {%- endif -%}
+  </div>
+</section>
+{% schema %}
+{ "name": "Búsqueda principal", "tag": "section", "settings": [{ "type": "select", "id": "columns_desktop", "label": "Columnas", "options": [{"value":"3","label":"3"},{"value":"4","label":"4"}], "default": "4" }] }
+{% endschema %}

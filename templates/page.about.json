@@ -1,0 +1,31 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "eyebrow": "Beverly, MA",
+        "title": "About",
+        "title_accent": "Inkcora.",
+        "text": "Inkcora was founded on a simple belief: businesses deserve a print partner that cares as much about their brand as they do.",
+        "cta_primary_label": "Request a Quote",
+        "cta_primary_url": "/pages/contact",
+        "show_stats": false
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "settings": {}
+    },
+    "cta": {
+      "type": "rich-text",
+      "settings": {
+        "title": "Let us build something great together.",
+        "text": "Whether you need 5 tees or 5,000 hoodies, we are ready to help.",
+        "cta_label": "Request a Quote",
+        "cta_url": "/pages/contact",
+        "color_scheme": "dark"
+      }
+    }
+  },
+  "order": ["hero", "main", "cta"]
+}

@@ -1,0 +1,38 @@
+{% comment %}Inkcora — sections/rich-text.liquid{% endcomment %}
+<section class="section {% if section.settings.color_scheme == 'dark' %}section--dark{% elsif section.settings.color_scheme == 'secondary' %}section--secondary{% endif %} scroll-reveal">
+  <div class="page-width text-center" style="max-width:640px">
+    {%- if section.settings.tag != blank -%}
+      <div class="section-tag {% if section.settings.color_scheme == 'dark' %}section-tag--light{% endif %}">{{ section.settings.tag }}</div>
+    {%- endif -%}
+    {%- if section.settings.title != blank -%}
+      <h2 class="h2 {% if section.settings.color_scheme == 'dark' %}" style="color:#fff;margin-bottom:1rem"{%- else -%}" style="margin-bottom:1rem"{%- endif -%}>{{ section.settings.title }}</h2>
+    {%- endif -%}
+    {%- if section.settings.text != blank -%}
+      <p style="font-size:1.0625rem;color:{% if section.settings.color_scheme == 'dark' %}rgba(255,255,255,0.65){% else %}var(--color-text-muted){% endif %};margin-bottom:2.5rem;line-height:1.75">{{ section.settings.text }}</p>
+    {%- endif -%}
+    <div style="display:flex;gap:0.875rem;justify-content:center;flex-wrap:wrap">
+      {%- if section.settings.cta_label != blank -%}
+        <a href="{{ section.settings.cta_url }}" class="btn btn--primary">{{ section.settings.cta_label }}</a>
+      {%- endif -%}
+      {%- if section.settings.cta_secondary_label != blank -%}
+        <a href="{{ section.settings.cta_secondary_url }}" class="btn btn--secondary">{{ section.settings.cta_secondary_label }}</a>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Texto enriquecido con CTA",
+  "settings": [
+    { "type": "text", "id": "tag", "label": "Etiqueta" },
+    { "type": "text", "id": "title", "label": "Título" },
+    { "type": "textarea", "id": "text", "label": "Descripción" },
+    { "type": "text", "id": "cta_label", "label": "Botón primario" },
+    { "type": "url", "id": "cta_url", "label": "Enlace primario" },
+    { "type": "text", "id": "cta_secondary_label", "label": "Botón secundario" },
+    { "type": "url", "id": "cta_secondary_url", "label": "Enlace secundario" },
+    { "type": "select", "id": "color_scheme", "label": "Esquema de color", "options": [{"value":"white","label":"Blanco"},{"value":"secondary","label":"Secundario"},{"value":"dark","label":"Oscuro"}], "default": "white" }
+  ],
+  "presets": [{ "name": "Texto enriquecido con CTA" }]
+}
+{% endschema %}

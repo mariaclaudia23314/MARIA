@@ -1,0 +1,19 @@
+{
+  "sections": {
+    "main": {
+      "type": "contact-form",
+      "settings": {
+        "title": "Request a Custom Quote.",
+        "text": "Fill in the details below and receive a full quote with a free digital proof within 24 hours."
+      },
+      "blocks": {
+        "t1": { "type": "timeline_item", "settings": { "time": "Within 1h", "description": "We confirm receipt of your request via email." } },
+        "t2": { "type": "timeline_item", "settings": { "time": "Within 24h", "description": "A detailed quote + free digital proof arrives in your inbox." } },
+        "t3": { "type": "timeline_item", "settings": { "time": "On Approval", "description": "Production begins immediately upon your sign-off." } },
+        "t4": { "type": "timeline_item", "settings": { "time": "3-5 Days", "description": "Your branded merchandise ships to your door." } }
+      },
+      "block_order": ["t1","t2","t3","t4"]
+    }
+  },
+  "order": ["main"]
+}

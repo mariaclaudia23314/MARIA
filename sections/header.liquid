@@ -1,0 +1,98 @@
+{% comment %}Inkcora — sections/header.liquid{% endcomment %}
+<link rel="stylesheet" href="{{ 'base.css' | asset_url }}">
+<header class="header" role="banner">
+  {%- if settings.show_announcement_bar and settings.announcement_text != blank -%}
+    <div class="announcement-bar">
+      <p class="announcement-bar__text">
+        {{ settings.announcement_text }}
+        {%- if settings.show_phone_in_header and settings.store_phone != blank -%}
+          &nbsp;·&nbsp;
+          <a href="tel:{{ settings.store_phone | remove: ' ' | remove: '(' | remove: ')' | remove: '-' }}" class="announcement-bar__link">{{ settings.store_phone }}</a>
+        {%- endif -%}
+      </p>
+    </div>
+  {%- endif -%}
+  <div class="page-width">
+    <div class="header__inner">
+      {%- comment -%} Logo {%- endcomment -%}
+      <a href="{{ routes.root_url }}" class="header__logo" aria-label="{{ shop.name }}">
+        {%- if settings.logo -%}
+          {{ settings.logo | image_url: width: settings.logo_width | image_tag: loading: 'eager', fetchpriority: 'high', alt: shop.name }}
+        {%- else -%}
+          <span style="font-family:var(--font-heading);font-size:1.375rem;font-weight:700;letter-spacing:0.02em;color:var(--color-text)">{{ shop.name }}</span>
+        {%- endif -%}
+      </a>
+
+      {%- comment -%} Desktop nav {%- endcomment -%}
+      <nav class="header__nav" role="navigation" aria-label="Main navigation">
+        {%- for link in section.settings.menu.links -%}
+          {%- if link.links != blank -%}
+            <div style="position:relative">
+              <button class="header__nav-link {% if link.active %}active{% endif %}" style="background:none;border:none;cursor:pointer;font-size:0.8125rem;font-weight:500">
+                {{ link.title }}
+              </button>
+            </div>
+          {%- else -%}
+            <a href="{{ link.url }}" class="header__nav-link {% if link.active %}active{% endif %}">{{ link.title }}</a>
+          {%- endif -%}
+        {%- endfor -%}
+      </nav>
+
+      {%- comment -%} Actions {%- endcomment -%}
+      <div class="header__actions">
+        {%- if section.settings.enable_language_selector and localization.available_languages.size > 1 -%}
+          <div class="localization-selector">
+            <button class="btn btn--secondary" style="padding:0.5rem 0.75rem;font-size:0.75rem">
+              {{ request.locale.name }}
+            </button>
+          </div>
+        {%- endif -%}
+        <a href="{{ routes.search_url }}" aria-label="{{ 'general.search.search' | t }}" style="padding:0.5rem;display:flex;align-items:center">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="8.5" cy="8.5" r="5.5" stroke="currentColor" stroke-width="1.5"/><path d="M13 13l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </a>
+        {%- if section.settings.enable_country_selector and localization.available_countries.size > 1 -%}
+          {%- comment -%}Country selector placeholder{%- endcomment -%}
+        {%- endif -%}
+        <a href="{{ routes.cart_url }}" class="header__cart" data-cart-toggle aria-label="{{ 'sections.header.cart_count' | t: count: cart.item_count }}" style="position:relative;padding:0.5rem;display:flex;align-items:center">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M2 2h2.5l2 8h9l1.5-5H6.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9" cy="17" r="1.2" fill="currentColor"/><circle cx="14" cy="17" r="1.2" fill="currentColor"/></svg>
+          {%- if cart.item_count > 0 -%}
+            <span style="position:absolute;top:4px;right:4px;width:16px;height:16px;border-radius:50%;background:var(--color-primary);color:#fff;font-size:9px;font-weight:700;display:flex;align-items:center;justify-content:center">{{ cart.item_count }}</span>
+          {%- endif -%}
+        </a>
+        <a href="/pages/contact" class="btn btn--primary" style="padding:0.6rem 1.25rem;font-size:0.75rem">
+          {{ 'general.get_quote' | t | default: 'Get a Quote' }}
+        </a>
+        <button class="header__menu-toggle" aria-label="Menu" aria-expanded="false">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M3 6h16M3 11h16M3 16h16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "Encabezado",
+  "class": "section-header",
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "menu",
+      "default": "main-menu",
+      "label": "Menú de navegación"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_language_selector",
+      "default": true,
+      "label": "Activar selector de idioma"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_country_selector",
+      "default": false,
+      "label": "Activar selector de país"
+    }
+  ]
+}
+{% endschema %}

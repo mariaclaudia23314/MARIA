@@ -1,0 +1,26 @@
+{% comment %}Inkcora — sections/main-article.liquid{% endcomment %}
+<section class="section">
+  <div class="page-width" style="max-width:780px">
+    <div style="margin-bottom:2rem">
+      <a href="{{ blog.url }}" style="font-size:0.75rem;color:var(--color-text-muted);letter-spacing:0.04em">{{ blog.title }}</a>
+      <span style="color:var(--color-text-muted);margin:0 0.5rem">›</span>
+      <span style="font-size:0.75rem;color:var(--color-text);font-weight:500">{{ article.title }}</span>
+    </div>
+    {%- if article.tags.size > 0 -%}
+      <div style="font-size:0.625rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-primary);margin-bottom:1rem">{{ article.tags | first }}</div>
+    {%- endif -%}
+    <h1 class="h1" style="margin-bottom:1.5rem">{{ article.title }}</h1>
+    {%- if article.image -%}
+      <div style="border-radius:var(--radius-card);overflow:hidden;margin-bottom:2.5rem;border:1px solid var(--color-border)">
+        {{ article.image | image_url: width: 1200 | image_tag: style: 'width:100%;aspect-ratio:16/7;object-fit:cover', loading: 'eager' }}
+      </div>
+    {%- endif -%}
+    <div style="font-size:1rem;line-height:1.85;color:var(--color-text)">{{ article.content }}</div>
+    <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid var(--color-border)">
+      <a href="{{ blog.url }}" class="btn btn--secondary">&larr; Back to {{ blog.title }}</a>
+    </div>
+  </div>
+</section>
+{% schema %}
+{ "name": "Artículo principal", "tag": "section", "settings": [] }
+{% endschema %}
