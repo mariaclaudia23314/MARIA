@@ -1,26 +1,48 @@
 {% comment %}Inkcora — sections/footer.liquid{% endcomment %}
-<footer class="footer" role="contentinfo">
+
+{%- liquid
+  assign bg_color   = section.settings.background_color   | default: settings.color_navy
+  assign text_color = section.settings.text_color         | default: '#ffffff'
+  assign border_rgba = 'rgba(255,255,255,0.08)'
+-%}
+
+<footer class="footer" role="contentinfo"
+  style="background:{{ bg_color }};color:{{ text_color }}">
 
   {%- comment -%} Newsletter {%- endcomment -%}
   {%- if section.settings.show_newsletter -%}
-    <div style="padding:3.5rem 0;border-bottom:1px solid rgba(255,255,255,0.07)">
+    <div style="padding:3.5rem 0;border-bottom:1px solid {{ border_rgba }}">
       <div class="page-width" style="text-align:center">
-        <h3 style="font-family:var(--font-heading,serif);font-size:1.875rem;font-weight:600;color:#fff;margin-bottom:0.5rem">{{ section.settings.newsletter_title | default: 'Stay Informed' }}</h3>
-        <p style="color:var(--color-primary);font-size:0.9375rem;margin-bottom:1.75rem">{{ section.settings.newsletter_text | default: 'New products, print tips, and exclusive B2B offers.' }}</p>
+        {%- if section.settings.newsletter_title != blank -%}
+          <h3 style="font-family:var(--font-heading,serif);font-size:1.875rem;font-weight:600;color:{{ text_color }};margin-bottom:0.5rem">
+            {{ section.settings.newsletter_title }}
+          </h3>
+        {%- endif -%}
+        {%- if section.settings.newsletter_text != blank -%}
+          <p style="color:var(--color-primary);font-size:0.9375rem;margin-bottom:1.75rem">
+            {{ section.settings.newsletter_text }}
+          </p>
+        {%- endif -%}
         {% form 'customer' %}
           <input type="hidden" name="contact[tags]" value="newsletter">
           <div style="display:flex;max-width:480px;margin:0 auto">
-            <input type="email" name="contact[email]" placeholder="{{ section.settings.newsletter_placeholder | default: 'your@company.com' }}" required style="flex:1;padding:0.875rem 1.25rem;border:1px solid rgba(255,255,255,0.15);border-right:none;background:rgba(255,255,255,0.06);color:#fff;font-size:0.9375rem;font-family:inherit;outline:none">
-            <button type="submit" style="background:var(--color-primary);color:#fff;border:none;padding:0 1.75rem;font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;font-family:inherit;white-space:nowrap">{{ section.settings.newsletter_cta | default: 'Subscribe' }}</button>
+            <input type="email" name="contact[email]"
+              placeholder="{{ section.settings.newsletter_placeholder | default: 'your@company.com' }}"
+              required
+              style="flex:1;padding:0.875rem 1.25rem;border:1px solid rgba(255,255,255,0.15);border-right:none;background:rgba(255,255,255,0.06);color:{{ text_color }};font-size:0.9375rem;font-family:inherit;outline:none">
+            <button type="submit"
+              style="background:var(--color-primary);color:#fff;border:none;padding:0 1.75rem;font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;font-family:inherit;white-space:nowrap">
+              {{ section.settings.newsletter_cta | default: 'Subscribe' }}
+            </button>
           </div>
         {% endform %}
       </div>
     </div>
   {%- endif -%}
 
-  {%- comment -%} Main footer columns {%- endcomment -%}
+  {%- comment -%} Main columns {%- endcomment -%}
   <div class="page-width" style="padding-top:3rem">
-    <div style="display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:3rem;padding-bottom:3rem;border-bottom:1px solid rgba(255,255,255,0.07);margin-bottom:1.5rem">
+    <div style="display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:3rem;padding-bottom:3rem;border-bottom:1px solid {{ border_rgba }};margin-bottom:1.5rem">
 
       {%- comment -%} Brand column {%- endcomment -%}
       <div>
@@ -33,35 +55,55 @@
             <div style="width:32px;height:32px;background:var(--color-primary);border-radius:4px;display:flex;align-items:center;justify-content:center">
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="12" height="12" rx="1" stroke="#fff" stroke-width="1.5"/><path d="M5 8h6M8 5v6" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg>
             </div>
-            <span style="font-family:var(--font-heading,serif);font-size:1.125rem;font-weight:700;letter-spacing:0.06em;color:#fff;text-transform:uppercase">{{ shop.name }}</span>
+            <span style="font-family:var(--font-heading,serif);font-size:1.125rem;font-weight:700;letter-spacing:0.06em;color:{{ text_color }};text-transform:uppercase">{{ shop.name }}</span>
           </a>
         {%- endif -%}
-        <p style="font-size:0.875rem;color:rgba(255,255,255,0.5);line-height:1.65;margin-bottom:1.25rem">{{ section.settings.footer_tagline | default: shop.description }}</p>
+
+        {%- if section.settings.footer_tagline != blank -%}
+          <p style="font-size:0.875rem;color:{{ text_color | color_modify: 'alpha', 0.55 }};line-height:1.65;margin-bottom:1.25rem">
+            {{ section.settings.footer_tagline }}
+          </p>
+        {%- endif -%}
         {%- if section.settings.store_address != blank -%}
-          <div style="font-size:0.875rem;color:rgba(255,255,255,0.35);margin-bottom:0.375rem">{{ section.settings.store_address }}</div>
+          <div style="font-size:0.875rem;color:{{ text_color | color_modify: 'alpha', 0.4 }};margin-bottom:0.375rem">
+            {{ section.settings.store_address }}
+          </div>
         {%- endif -%}
         {%- if section.settings.store_email != blank -%}
-          <a href="mailto:{{ section.settings.store_email }}" style="font-size:0.875rem;color:var(--color-primary);text-decoration:none">{{ section.settings.store_email }}</a>
+          <a href="mailto:{{ section.settings.store_email }}"
+            style="font-size:0.875rem;color:var(--color-primary);text-decoration:none">
+            {{ section.settings.store_email }}
+          </a>
         {%- endif -%}
+
         <div style="display:flex;gap:1rem;margin-top:1.25rem">
           {%- for block in section.blocks -%}
             {%- if block.type == 'social_link' -%}
-              <a href="{{ block.settings.url }}" target="_blank" rel="noopener" style="font-size:0.8125rem;color:rgba(255,255,255,0.45);text-decoration:none" {{ block.shopify_attributes }}>{{ block.settings.label }}</a>
+              <a href="{{ block.settings.url }}" target="_blank" rel="noopener"
+                style="font-size:0.8125rem;color:{{ text_color | color_modify: 'alpha', 0.5 }};text-decoration:none"
+                {{ block.shopify_attributes }}>{{ block.settings.label }}</a>
             {%- endif -%}
           {%- endfor -%}
         </div>
       </div>
 
-      {%- comment -%} Link columns {%- endcomment -%}
+      {%- comment -%} Navigation columns {%- endcomment -%}
       {%- for i in (1..3) -%}
         {%- assign menu_id    = 'footer_menu_' | append: i -%}
         {%- assign menu_label = 'footer_menu_label_' | append: i -%}
         {%- if section.settings[menu_id] != blank -%}
           <div>
-            <div style="font-size:0.625rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:1.25rem">{{ section.settings[menu_label] }}</div>
+            <div style="font-size:0.625rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:{{ text_color | color_modify: 'alpha', 0.4 }};margin-bottom:1.25rem">
+              {{ section.settings[menu_label] }}
+            </div>
             <nav style="display:flex;flex-direction:column;gap:0.75rem">
               {%- for link in linklists[section.settings[menu_id]].links -%}
-                <a href="{{ link.url }}" style="font-size:0.9rem;color:rgba(255,255,255,0.6);text-decoration:none;transition:color 0.15s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">{{ link.title }}</a>
+                <a href="{{ link.url }}"
+                  style="font-size:0.9rem;color:{{ text_color | color_modify: 'alpha', 0.65 }};text-decoration:none"
+                  onmouseover="this.style.color='{{ text_color }}'"
+                  onmouseout="this.style.color='{{ text_color | color_modify: 'alpha', 0.65 }}'">
+                  {{ link.title }}
+                </a>
               {%- endfor -%}
             </nav>
           </div>
@@ -70,15 +112,23 @@
 
     </div>
 
-    {%- comment -%} Footer bottom {%- endcomment -%}
-    <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:2rem">
-      <span style="font-size:0.8125rem;color:rgba(255,255,255,0.3)">&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}. All rights reserved.</span>
+    {%- comment -%} Bottom bar {%- endcomment -%}
+    <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:2rem;flex-wrap:wrap;gap:1rem">
+      <span style="font-size:0.8125rem;color:{{ text_color | color_modify: 'alpha', 0.35 }}">
+        &copy; {{ 'now' | date: '%Y' }} {{ shop.name }}. All rights reserved.
+      </span>
       <div style="display:flex;gap:1.5rem">
         {%- if shop.privacy_policy != blank -%}
-          <a href="{{ shop.privacy_policy.url }}" style="font-size:0.8125rem;color:rgba(255,255,255,0.3);text-decoration:none">Privacy Policy</a>
+          <a href="{{ shop.privacy_policy.url }}"
+            style="font-size:0.8125rem;color:{{ text_color | color_modify: 'alpha', 0.35 }};text-decoration:none">
+            Privacy Policy
+          </a>
         {%- endif -%}
         {%- if shop.terms_of_service != blank -%}
-          <a href="{{ shop.terms_of_service.url }}" style="font-size:0.8125rem;color:rgba(255,255,255,0.3);text-decoration:none">Terms of Service</a>
+          <a href="{{ shop.terms_of_service.url }}"
+            style="font-size:0.8125rem;color:{{ text_color | color_modify: 'alpha', 0.35 }};text-decoration:none">
+            Terms of Service
+          </a>
         {%- endif -%}
       </div>
     </div>
@@ -90,6 +140,9 @@
 {
   "name": "Pie de página",
   "settings": [
+    { "type": "header", "content": "Colores" },
+    { "type": "color", "id": "background_color", "label": "Color de fondo", "default": "#1a2038" },
+    { "type": "color", "id": "text_color", "label": "Color de texto", "default": "#ffffff" },
     { "type": "header", "content": "Newsletter" },
     { "type": "checkbox", "id": "show_newsletter", "label": "Mostrar newsletter", "default": true },
     { "type": "text", "id": "newsletter_title", "label": "Título", "default": "Stay Informed" },
@@ -97,24 +150,24 @@
     { "type": "text", "id": "newsletter_placeholder", "label": "Placeholder del campo", "default": "your@company.com" },
     { "type": "text", "id": "newsletter_cta", "label": "Texto del botón", "default": "Subscribe" },
     { "type": "header", "content": "Información de la tienda" },
-    { "type": "textarea", "id": "footer_tagline", "label": "Descripción", "default": "Your brand, printed with intention. Premium custom apparel for businesses, teams, and creators." },
+    { "type": "textarea", "id": "footer_tagline", "label": "Descripción breve", "default": "Your brand, printed with intention. Premium custom apparel for businesses, teams, and creators." },
     { "type": "text", "id": "store_address", "label": "Dirección", "default": "Beverly, MA 01915" },
-    { "type": "text", "id": "store_email", "label": "Email", "default": "hello@inkcora.com" },
+    { "type": "text", "id": "store_email", "label": "Email de contacto", "default": "hello@inkcora.com" },
     { "type": "header", "content": "Menús de navegación" },
-    { "type": "link_list", "id": "footer_menu_1", "label": "Menú 1 (Products)" },
-    { "type": "text", "id": "footer_menu_label_1", "label": "Etiqueta menú 1", "default": "Products" },
-    { "type": "link_list", "id": "footer_menu_2", "label": "Menú 2 (Company)" },
-    { "type": "text", "id": "footer_menu_label_2", "label": "Etiqueta menú 2", "default": "Company" },
-    { "type": "link_list", "id": "footer_menu_3", "label": "Menú 3 (Support)" },
-    { "type": "text", "id": "footer_menu_label_3", "label": "Etiqueta menú 3", "default": "Support" }
+    { "type": "link_list", "id": "footer_menu_1", "label": "Menú 1" },
+    { "type": "text", "id": "footer_menu_label_1", "label": "Título menú 1", "default": "Products" },
+    { "type": "link_list", "id": "footer_menu_2", "label": "Menú 2" },
+    { "type": "text", "id": "footer_menu_label_2", "label": "Título menú 2", "default": "Company" },
+    { "type": "link_list", "id": "footer_menu_3", "label": "Menú 3" },
+    { "type": "text", "id": "footer_menu_label_3", "label": "Título menú 3", "default": "Support" }
   ],
   "blocks": [
     {
       "type": "social_link",
       "name": "Red social",
       "settings": [
-        { "type": "text", "id": "label", "label": "Nombre", "default": "Instagram" },
-        { "type": "url", "id": "url", "label": "URL" }
+        { "type": "text", "id": "label", "label": "Nombre de la red", "default": "Instagram" },
+        { "type": "url", "id": "url", "label": "URL de la red social" }
       ]
     }
   ]
