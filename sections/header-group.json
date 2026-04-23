@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "type": "header",
   "name": "header",
@@ -6,7 +15,10 @@
       "type": "announcement-bar",
       "settings": {
         "show_announcement": true,
-        "text": "Free digital proof in 24h \u00b7 No minimums \u00b7 Ships in 3\u20135 days"
+        "text": "No Minimum Orders · Free Digital Proof in 24h · Ships in 3–5 Days · Beverly, MA · 4 Print Technologies · B2B Specialists",
+        "link": "",
+        "background_color": "#1a2038",
+        "text_color": "#ffffff"
       }
     },
     "header": {
@@ -18,5 +30,8 @@
       }
     }
   },
-  "order": ["announcement-bar", "header"]
+  "order": [
+    "announcement-bar",
+    "header"
+  ]
 }

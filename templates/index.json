@@ -1,17 +1,36 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero": {
       "type": "hero",
       "settings": {
-        "eyebrow": "Beverly, MA · Premium B2B Custom Printing · Est. 2024",
+        "eyebrow": "BEVERLY, MA · PREMIUM B2B CUSTOM PRINTING · EST. 2024",
         "title": "We Strengthen",
         "title_accent": "Your Brand.",
         "text": "Premium custom apparel and merchandise for corporations, agencies, and growing teams. Four print technologies. One trusted partner.",
-        "cta_primary_label": "Browse Catalog",
+        "cta_primary_label": "BROWSE CATALOG →",
         "cta_primary_url": "/collections/all",
-        "cta_secondary_label": "Request a Quote",
+        "cta_secondary_label": "REQUEST A QUOTE",
         "cta_secondary_url": "/pages/contact",
-        "show_stats": false
+        "image_overlay_opacity": 6,
+        "glow_color": "#c26e29",
+        "show_stats": false,
+        "stat_1_number": "500+",
+        "stat_1_label": "BRANDS SERVED",
+        "stat_2_number": "4",
+        "stat_2_label": "PRINT TECHNOLOGIES",
+        "stat_3_number": "3-5 Days",
+        "stat_3_label": "AVG. TURNAROUND",
+        "stat_4_number": "24h",
+        "stat_4_label": "FREE PROOF DELIVERY"
       }
     },
     "urgency-bar": {
@@ -19,56 +38,158 @@
       "settings": {
         "show": true,
         "urgency_text": "Order by Friday 3pm EST → Ships Monday",
-        "phone": "+1 (978) 624-8721",
-        "guarantee_text": "100% Satisfaction Guarantee"
+        "phone": "+1 (978) 624–8721",
+        "guarantee_text": "100% Satisfaction Guarantee",
+        "background_color": "#0e1422",
+        "text_color": "#d6d9e8"
       }
     },
     "trust-bar": {
       "type": "trust-bar",
-      "settings": {},
       "blocks": {
-        "item1": { "type": "item", "settings": { "text": "No Minimum Orders" } },
-        "item2": { "type": "item", "settings": { "text": "Free Digital Proof in 24h" } },
-        "item3": { "type": "item", "settings": { "text": "Ships in 3–5 Days" } },
-        "item4": { "type": "item", "settings": { "text": "Beverly, MA" } },
-        "item5": { "type": "item", "settings": { "text": "4 Print Technologies" } },
-        "item6": { "type": "item", "settings": { "text": "B2B Specialists" } }
+        "item1": {
+          "type": "item",
+          "settings": {
+            "text": "No Minimum Orders"
+          }
+        },
+        "item2": {
+          "type": "item",
+          "settings": {
+            "text": "Free Digital Proof in 24h"
+          }
+        },
+        "item3": {
+          "type": "item",
+          "settings": {
+            "text": "Ships in 3–5 Days"
+          }
+        },
+        "item4": {
+          "type": "item",
+          "settings": {
+            "text": "Beverly, MA"
+          }
+        },
+        "item5": {
+          "type": "item",
+          "settings": {
+            "text": "4 Print Technologies"
+          }
+        },
+        "item6": {
+          "type": "item",
+          "settings": {
+            "text": "B2B Specialists"
+          }
+        }
       },
-      "block_order": ["item1","item2","item3","item4","item5","item6"]
+      "block_order": [
+        "item1",
+        "item2",
+        "item3",
+        "item4",
+        "item5",
+        "item6"
+      ],
+      "settings": {}
     },
     "stats": {
       "type": "stats",
-      "settings": {},
       "blocks": {
-        "s1": { "type": "stat", "settings": { "number": "500+", "label": "Brands Served" } },
-        "s2": { "type": "stat", "settings": { "number": "4", "label": "Print Technologies" } },
-        "s3": { "type": "stat", "settings": { "number": "3-5 Days", "label": "Avg. Turnaround" } },
-        "s4": { "type": "stat", "settings": { "number": "24h", "label": "Free Proof Delivery" } }
+        "s1": {
+          "type": "stat",
+          "settings": {
+            "number": "500+",
+            "label": "BRANDS SERVED"
+          }
+        },
+        "s2": {
+          "type": "stat",
+          "settings": {
+            "number": "4",
+            "label": "PRINT TECHNOLOGIES"
+          }
+        },
+        "s3": {
+          "type": "stat",
+          "settings": {
+            "number": "3-5 Days",
+            "label": "AVG. TURNAROUND"
+          }
+        },
+        "s4": {
+          "type": "stat",
+          "settings": {
+            "number": "24h",
+            "label": "FREE PROOF DELIVERY"
+          }
+        }
       },
-      "block_order": ["s1","s2","s3","s4"]
+      "block_order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4"
+      ],
+      "settings": {}
     },
     "services": {
       "type": "services",
+      "blocks": {
+        "s1": {
+          "type": "service",
+          "settings": {
+            "title": "Sublimation",
+            "description": "Full-color, all-over prints fused permanently into polyester fibers. Vibrant, wash-proof results ideal for performance wear and corporate gifts.",
+            "tag": "Epson SureColor F170"
+          }
+        },
+        "s2": {
+          "type": "service",
+          "settings": {
+            "title": "HTV Vinyl",
+            "description": "Heat-transfer vinyl for precise logos, text, and layered designs on any fabric or color. The industry standard for team apparel and branded uniforms.",
+            "tag": "Siser EasyWeed"
+          }
+        },
+        "s3": {
+          "type": "service",
+          "settings": {
+            "title": "DTF Transfer",
+            "description": "Full-color digital transfers onto cotton and blends with no minimum run sizes. Ideal for complex multi-color artwork and short production runs.",
+            "tag": "DTF Powder Method"
+          }
+        },
+        "s4": {
+          "type": "service",
+          "settings": {
+            "title": "Screen Printing",
+            "description": "The classic method — bold, durable, and cost-effective at scale. Premium Rapid Cure inks for long-lasting results on any garment color.",
+            "tag": "Rapid Cure Inks"
+          }
+        }
+      },
+      "block_order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4"
+      ],
       "settings": {
         "tag": "Our Capabilities",
         "title": "Four technologies. One partner.",
         "cta_label": "How It Works →",
         "cta_url": "/pages/how-it-works",
         "color_scheme": "dark"
-      },
-      "blocks": {
-        "s1": { "type": "service", "settings": { "title": "Sublimation", "description": "Full-color, all-over prints fused permanently into polyester fibers. Vibrant, wash-proof results ideal for performance wear and corporate gifts.", "tag": "Epson SureColor F170" } },
-        "s2": { "type": "service", "settings": { "title": "HTV Vinyl", "description": "Heat-transfer vinyl for precise logos, text, and layered designs on any fabric or color. The industry standard for team apparel and branded uniforms.", "tag": "Siser EasyWeed" } },
-        "s3": { "type": "service", "settings": { "title": "DTF Transfer", "description": "Full-color digital transfers onto cotton and blends with no minimum run sizes. Ideal for complex multi-color artwork and short production runs.", "tag": "DTF Powder Method" } },
-        "s4": { "type": "service", "settings": { "title": "Screen Printing", "description": "The classic method — bold, durable, and cost-effective at scale. Premium Rapid Cure inks for long-lasting results on any garment color.", "tag": "Rapid Cure Inks" } }
-      },
-      "block_order": ["s1","s2","s3","s4"]
+      }
     },
     "featured-products": {
       "type": "featured-products",
       "settings": {
         "tag": "Catalog",
         "title": "Apparel & accessories for every brand.",
+        "collection": "",
         "products_to_show": 4,
         "columns_desktop": "4",
         "color_scheme": "white",
@@ -78,7 +199,44 @@
     },
     "brand-partner": {
       "type": "brand-partner",
+      "blocks": {
+        "f1": {
+          "type": "feature",
+          "settings": {
+            "title": "No Minimums, Ever",
+            "text": "Order one item or ten thousand — the same quality, care, and turnaround every time."
+          }
+        },
+        "f2": {
+          "type": "feature",
+          "settings": {
+            "title": "Free Digital Proof in 24 Hours",
+            "text": "Every single order includes a detailed digital proof before production begins. You approve it. We print it."
+          }
+        },
+        "f3": {
+          "type": "feature",
+          "settings": {
+            "title": "Four Print Technologies",
+            "text": "We match the right technique to your design and fabric — sublimation, HTV, DTF, or screen print."
+          }
+        },
+        "f4": {
+          "type": "feature",
+          "settings": {
+            "title": "Local & Accountable",
+            "text": "Our team is in Beverly, MA. Real people, real care, real accountability on every order."
+          }
+        }
+      },
+      "block_order": [
+        "f1",
+        "f2",
+        "f3",
+        "f4"
+      ],
       "settings": {
+        "image_alt": "Lifestyle — corporate tee in action. Inkcora branded apparel",
         "tag": "Why Inkcora",
         "title": "A brand partner,",
         "title_italic": "not just a printer.",
@@ -86,31 +244,112 @@
         "cta_primary_url": "/pages/contact",
         "cta_secondary_label": "Our Process →",
         "cta_secondary_url": "/pages/how-it-works"
-      },
-      "blocks": {
-        "f1": { "type": "feature", "settings": { "title": "No Minimums, Ever", "text": "Order one item or ten thousand — the same quality, care, and turnaround every time." } },
-        "f2": { "type": "feature", "settings": { "title": "Free Digital Proof in 24 Hours", "text": "Every single order includes a detailed digital proof before production begins. You approve it. We print it." } },
-        "f3": { "type": "feature", "settings": { "title": "Four Print Technologies", "text": "We match the right technique to your design and fabric — sublimation, HTV, DTF, or screen print." } },
-        "f4": { "type": "feature", "settings": { "title": "Local & Accountable", "text": "Our team is in Beverly, MA. Real people, real care, real accountability on every order." } }
-      },
-      "block_order": ["f1","f2","f3","f4"]
+      }
     },
     "testimonials": {
       "type": "testimonials",
+      "blocks": {
+        "t1": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Inkcora transformed how we present our brand. Quality exceeded expectations.",
+            "name": "Sarah Mitchell",
+            "role": "Brand Director, Bloom Studio"
+          }
+        },
+        "t2": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "From proof to delivery in four days. No other vendor has matched that turnaround.",
+            "name": "Carlos Delgado",
+            "role": "Marketing Director, Wavetek Corp"
+          }
+        },
+        "t3": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "No minimums and a free proof eliminated the risk entirely. Exceptional service.",
+            "name": "Priya Krishnan",
+            "role": "CEO, The Spice Shelf"
+          }
+        }
+      },
+      "block_order": [
+        "t1",
+        "t2",
+        "t3"
+      ],
       "settings": {
         "tag": "Client Results",
         "title": "Trusted by brands across New England.",
         "color_scheme": "white"
-      },
-      "blocks": {
-        "t1": { "type": "testimonial", "settings": { "quote": "Inkcora transformed how we present our brand. Quality exceeded expectations.", "name": "Sarah Mitchell", "role": "Brand Director, Bloom Studio" } },
-        "t2": { "type": "testimonial", "settings": { "quote": "From proof to delivery in four days. No other vendor has matched that turnaround.", "name": "Carlos Delgado", "role": "Marketing Director, Wavetek Corp" } },
-        "t3": { "type": "testimonial", "settings": { "quote": "No minimums and a free proof eliminated the risk entirely. Exceptional service.", "name": "Priya Krishnan", "role": "CEO, The Spice Shelf" } }
-      },
-      "block_order": ["t1","t2","t3"]
+      }
     },
     "corporate-accounts": {
       "type": "corporate-accounts",
+      "blocks": {
+        "feat1": {
+          "type": "feature",
+          "settings": {
+            "title": "Net-30 Billing",
+            "text": "Order now, pay in 30 days. Ideal for agencies, events teams, and growing businesses."
+          }
+        },
+        "feat2": {
+          "type": "feature",
+          "settings": {
+            "title": "Dedicated Account Manager",
+            "text": "One point of contact who knows your brand, your specs, and your timelines."
+          }
+        },
+        "feat3": {
+          "type": "feature",
+          "settings": {
+            "title": "Volume Pricing",
+            "text": "Automatic discounts at 10, 50, and 100+ units."
+          }
+        },
+        "feat4": {
+          "type": "feature",
+          "settings": {
+            "title": "Priority Production",
+            "text": "Corporate accounts get first-in-line production scheduling."
+          }
+        },
+        "stat1": {
+          "type": "stat_card",
+          "settings": {
+            "number": "Net-30",
+            "title": "Payment Terms Available",
+            "subtitle": "Invoice billing for established businesses"
+          }
+        },
+        "stat2": {
+          "type": "stat_card",
+          "settings": {
+            "number": "500+",
+            "title": "Corporate Clients Served",
+            "subtitle": "From startups to regional enterprise teams"
+          }
+        },
+        "stat3": {
+          "type": "stat_card",
+          "settings": {
+            "number": "20%",
+            "title": "Max Volume Discount",
+            "subtitle": "Applied automatically at 50+ units"
+          }
+        }
+      },
+      "block_order": [
+        "feat1",
+        "feat2",
+        "feat3",
+        "feat4",
+        "stat1",
+        "stat2",
+        "stat3"
+      ],
       "settings": {
         "tag": "Corporate Accounts",
         "title": "Built for businesses",
@@ -118,20 +357,77 @@
         "text": "Inkcora Corporate Accounts give growing businesses dedicated service, flexible billing, and volume pricing — without the complexity of enterprise contracts.",
         "cta_label": "Apply for Corporate Account →",
         "cta_url": "/pages/contact"
-      },
-      "blocks": {
-        "feat1": { "type": "feature", "settings": { "title": "Net-30 Billing", "text": "Order now, pay in 30 days. Ideal for agencies, events teams, and growing businesses." } },
-        "feat2": { "type": "feature", "settings": { "title": "Dedicated Account Manager", "text": "One point of contact who knows your brand, your specs, and your timelines." } },
-        "feat3": { "type": "feature", "settings": { "title": "Volume Pricing", "text": "Automatic discounts at 10, 50, and 100+ units." } },
-        "feat4": { "type": "feature", "settings": { "title": "Priority Production", "text": "Corporate accounts get first-in-line production scheduling." } },
-        "stat1": { "type": "stat_card", "settings": { "number": "Net-30", "title": "Payment Terms Available", "subtitle": "Invoice billing for established businesses" } },
-        "stat2": { "type": "stat_card", "settings": { "number": "500+", "title": "Corporate Clients Served", "subtitle": "From startups to regional enterprise teams" } },
-        "stat3": { "type": "stat_card", "settings": { "number": "20%", "title": "Max Volume Discount", "subtitle": "Applied automatically at 50+ units" } }
-      },
-      "block_order": ["feat1","feat2","feat3","feat4","stat1","stat2","stat3"]
+      }
     },
     "local-service": {
       "type": "local-service",
+      "blocks": {
+        "c1": {
+          "type": "city",
+          "settings": {
+            "city": "Beverly, MA"
+          }
+        },
+        "c2": {
+          "type": "city",
+          "settings": {
+            "city": "Salem, MA"
+          }
+        },
+        "c3": {
+          "type": "city",
+          "settings": {
+            "city": "Gloucester, MA"
+          }
+        },
+        "c4": {
+          "type": "city",
+          "settings": {
+            "city": "Newburyport, MA"
+          }
+        },
+        "c5": {
+          "type": "city",
+          "settings": {
+            "city": "Danvers, MA"
+          }
+        },
+        "c6": {
+          "type": "city",
+          "settings": {
+            "city": "Peabody, MA"
+          }
+        },
+        "c7": {
+          "type": "city",
+          "settings": {
+            "city": "Lynn, MA"
+          }
+        },
+        "c8": {
+          "type": "city",
+          "settings": {
+            "city": "Ipswich, MA"
+          }
+        },
+        "c9": {
+          "type": "city",
+          "settings": {
+            "city": "Manchester, MA"
+          }
+        }
+      },
+      "block_order": [
+        "c1",
+        "c2",
+        "c3",
+        "c4",
+        "c5",
+        "c6",
+        "c7",
+        "c8",
+        "c9"
+      ],
       "settings": {
         "tag": "Custom Printing in Beverly, MA",
         "title": "Proudly local.",
@@ -144,34 +440,56 @@
         "info_4": "+1 (978) 624-8721 · Mon–Fri 9am–6pm EST",
         "cta_label": "Get a Local Quote",
         "cta_url": "/pages/contact"
-      },
-      "blocks": {
-        "c1": { "type": "city", "settings": { "city": "Beverly, MA" } },
-        "c2": { "type": "city", "settings": { "city": "Salem, MA" } },
-        "c3": { "type": "city", "settings": { "city": "Gloucester, MA" } },
-        "c4": { "type": "city", "settings": { "city": "Newburyport, MA" } },
-        "c5": { "type": "city", "settings": { "city": "Danvers, MA" } },
-        "c6": { "type": "city", "settings": { "city": "Peabody, MA" } },
-        "c7": { "type": "city", "settings": { "city": "Lynn, MA" } },
-        "c8": { "type": "city", "settings": { "city": "Ipswich, MA" } },
-        "c9": { "type": "city", "settings": { "city": "Manchester, MA" } }
-      },
-      "block_order": ["c1","c2","c3","c4","c5","c6","c7","c8","c9"]
-    },
-    "cta-final": {
-      "type": "rich-text",
-      "settings": {
-        "title": "Ready to strengthen your brand?",
-        "text": "No minimums. Free proof. Ships in days. Start your order today.",
-        "cta_label": "Browse Products",
-        "cta_url": "/collections/all",
-        "cta_secondary_label": "Contact Us",
-        "cta_secondary_url": "/pages/contact",
-        "color_scheme": "white"
       }
     },
     "strategic-case": {
       "type": "strategic-case",
+      "blocks": {
+        "col1": {
+          "type": "column",
+          "settings": {
+            "icon": "ring",
+            "title": "Marketing & Visibility",
+            "item_1_title": "Brand Ambassadors",
+            "item_1_text": "Branded apparel turns customers and staff into walking billboards.",
+            "item_2_title": "Top-of-Mind Recall",
+            "item_2_text": "Physical products keep your brand present in everyday moments.",
+            "item_3_title": "Competitive Edge",
+            "item_3_text": "A well-designed merch line sets you apart from competitors."
+          }
+        },
+        "col2": {
+          "type": "column",
+          "settings": {
+            "icon": "diamond",
+            "title": "Loyalty & Relationships",
+            "item_1_title": "Client Appreciation",
+            "item_1_text": "A thoughtfully branded gift creates emotional connection and deepens loyalty.",
+            "item_2_title": "Employee Pride",
+            "item_2_text": "Team apparel fosters belonging, morale, and shared identity.",
+            "item_3_title": "Partner Relations",
+            "item_3_text": "Branded gifts are a powerful B2B relationship-building tool."
+          }
+        },
+        "col3": {
+          "type": "column",
+          "settings": {
+            "icon": "half-circle",
+            "title": "Commercial Impact",
+            "item_1_title": "Revenue Stream",
+            "item_1_text": "Branded merchandise can be sold directly as an income line.",
+            "item_2_title": "Event ROI",
+            "item_2_text": "Promotional giveaways at events drive booth traffic and capture leads.",
+            "item_3_title": "Word-of-Mouth",
+            "item_3_text": "A creative, useful product sparks organic recommendations."
+          }
+        }
+      },
+      "block_order": [
+        "col1",
+        "col2",
+        "col3"
+      ],
       "settings": {
         "tag": "The Strategic Case",
         "title": "Why smart companies",
@@ -183,14 +501,34 @@
         "banner_text": "Branded merchandise delivers lasting exposure at a fraction of the cost of digital, print, or out-of-home advertising.",
         "banner_cta_label": "Start Your Campaign →",
         "banner_cta_url": "/pages/contact"
-      },
-      "blocks": {
-        "col1": { "type": "column", "settings": { "icon": "ring", "title": "Marketing & Visibility", "item_1_title": "Brand Ambassadors", "item_1_text": "Branded apparel turns customers and staff into walking billboards.", "item_2_title": "Top-of-Mind Recall", "item_2_text": "Physical products keep your brand present in everyday moments.", "item_3_title": "Competitive Edge", "item_3_text": "A well-designed merch line sets you apart from competitors." } },
-        "col2": { "type": "column", "settings": { "icon": "diamond", "title": "Loyalty & Relationships", "item_1_title": "Client Appreciation", "item_1_text": "A thoughtfully branded gift creates emotional connection and deepens loyalty.", "item_2_title": "Employee Pride", "item_2_text": "Team apparel fosters belonging, morale, and shared identity.", "item_3_title": "Partner Relations", "item_3_text": "Branded gifts are a powerful B2B relationship-building tool." } },
-        "col3": { "type": "column", "settings": { "icon": "half-circle", "title": "Commercial Impact", "item_1_title": "Revenue Stream", "item_1_text": "Branded merchandise can be sold directly as an income line.", "item_2_title": "Event ROI", "item_2_text": "Promotional giveaways at events drive booth traffic and capture leads.", "item_3_title": "Word-of-Mouth", "item_3_text": "A creative, useful product sparks organic recommendations." } }
-      },
-      "block_order": ["col1","col2","col3"]
+      }
+    },
+    "cta-final": {
+      "type": "rich-text",
+      "settings": {
+        "tag": "",
+        "title": "Ready to strengthen your brand?",
+        "text": "No minimums. Free proof. Ships in days. Start your order today.",
+        "cta_label": "Browse Products",
+        "cta_url": "/collections/all",
+        "cta_secondary_label": "Contact Us",
+        "cta_secondary_url": "/pages/contact",
+        "color_scheme": "white"
+      }
     }
   },
-  "order": ["hero","urgency-bar","trust-bar","stats","services","featured-products","brand-partner","testimonials","corporate-accounts","local-service","strategic-case","cta-final"]
+  "order": [
+    "hero",
+    "urgency-bar",
+    "trust-bar",
+    "stats",
+    "services",
+    "featured-products",
+    "brand-partner",
+    "testimonials",
+    "corporate-accounts",
+    "local-service",
+    "strategic-case",
+    "cta-final"
+  ]
 }
