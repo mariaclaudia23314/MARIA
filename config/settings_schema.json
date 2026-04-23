@@ -76,7 +76,7 @@
       {
         "type": "color",
         "id": "color_text_muted",
-        "label": "Texto secundario",
+        "label": "Texto secundario / muted",
         "default": "#6b7280"
       },
       {
@@ -93,12 +93,14 @@
       {
         "type": "font_picker",
         "id": "type_heading_font",
-        "label": "Fuente de títulos"
+        "label": "Fuente de títulos",
+        "default": "cormorant_garamond_n4"
       },
       {
         "type": "font_picker",
         "id": "type_body_font",
-        "label": "Fuente de texto"
+        "label": "Fuente de texto",
+        "default": "dm_sans_n4"
       },
       {
         "type": "range",
@@ -130,8 +132,8 @@
         "id": "page_width",
         "min": 1000,
         "max": 1600,
-        "step": 20,
-        "default": 1280,
+        "step": 100,
+        "default": 1200,
         "unit": "px",
         "label": "Ancho máximo de página"
       },
@@ -251,7 +253,7 @@
       {
         "type": "checkbox",
         "id": "cart_show_vendor",
-        "label": "Mostrar proveedor",
+        "label": "Mostrar proveedor en carrito",
         "default": false
       }
     ]

@@ -4,7 +4,28 @@
   "sections": {
     "footer": {
       "type": "footer",
-      "settings": {}
+      "settings": {
+        "show_newsletter": true,
+        "newsletter_title": "Stay Informed",
+        "newsletter_text": "New products, print tips, and exclusive B2B offers.",
+        "newsletter_placeholder": "your@company.com",
+        "newsletter_cta": "Subscribe",
+        "footer_tagline": "Your brand, printed with intention. Premium custom apparel for businesses, teams, and creators. Beverly, MA.",
+        "store_address": "Beverly, MA 01915",
+        "store_email": "hello@inkcora.com",
+        "footer_menu_1": "footer-products",
+        "footer_menu_label_1": "Products",
+        "footer_menu_2": "footer-company",
+        "footer_menu_label_2": "Company",
+        "footer_menu_3": "footer-support",
+        "footer_menu_label_3": "Support"
+      },
+      "blocks": {
+        "social1": { "type": "social_link", "settings": { "label": "Instagram", "url": "https://instagram.com/inkcora" } },
+        "social2": { "type": "social_link", "settings": { "label": "LinkedIn", "url": "https://linkedin.com/company/inkcora" } },
+        "social3": { "type": "social_link", "settings": { "label": "Facebook", "url": "https://facebook.com/inkcora" } }
+      },
+      "block_order": ["social1","social2","social3"]
     }
   },
   "order": ["footer"]

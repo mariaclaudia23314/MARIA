@@ -1,0 +1,103 @@
+{% comment %}Inkcora — sections/local-service.liquid{% endcomment %}
+<section class="section" style="background:var(--color-background-secondary);padding:var(--spacing-sections,5rem) 0">
+  <div class="page-width">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start">
+
+      {%- comment -%} Left: Text {%- endcomment -%}
+      <div>
+        {%- if section.settings.tag != blank -%}
+          <div style="font-size:0.625rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-primary);margin-bottom:1.25rem">{{ section.settings.tag }}</div>
+        {%- endif -%}
+
+        <h2 style="font-family:var(--font-heading,serif);font-size:clamp(2rem,3vw,2.75rem);font-weight:700;color:var(--color-navy);line-height:1.15;margin-bottom:1.5rem">
+          {{ section.settings.title }}<br>
+          <em style="font-weight:400">{{ section.settings.title_italic }}</em>
+        </h2>
+
+        {%- if section.settings.text_1 != blank -%}
+          <p style="font-size:0.9375rem;color:var(--color-text-muted);line-height:1.7;margin-bottom:1rem">{{ section.settings.text_1 }}</p>
+        {%- endif -%}
+        {%- if section.settings.text_2 != blank -%}
+          <p style="font-size:0.9375rem;color:var(--color-text-muted);line-height:1.7;margin-bottom:2rem">{{ section.settings.text_2 }}</p>
+        {%- endif -%}
+
+        <div style="display:flex;flex-direction:column;gap:0.5rem;margin-bottom:2rem;font-size:0.875rem;color:var(--color-text)">
+          {%- if section.settings.info_1 != blank -%}<div>{{ section.settings.info_1 }}</div>{%- endif -%}
+          {%- if section.settings.info_2 != blank -%}<div>{{ section.settings.info_2 }}</div>{%- endif -%}
+          {%- if section.settings.info_3 != blank -%}<div>{{ section.settings.info_3 }}</div>{%- endif -%}
+          {%- if section.settings.info_4 != blank -%}<div>{{ section.settings.info_4 }}</div>{%- endif -%}
+        </div>
+
+        {%- if section.settings.cta_label != blank -%}
+          <a href="{{ section.settings.cta_url }}" class="btn btn--primary">{{ section.settings.cta_label }}</a>
+        {%- endif -%}
+      </div>
+
+      {%- comment -%} Right: Map + Cities {%- endcomment -%}
+      <div>
+        {%- if section.settings.map_image -%}
+          <div style="border-radius:var(--radius-card,8px);overflow:hidden;margin-bottom:1.25rem">
+            {{ section.settings.map_image | image_url: width: 700 | image_tag: loading: 'lazy', style: 'width:100%;aspect-ratio:4/3;object-fit:cover;display:block', alt: 'Map: Beverly MA – New England service area' }}
+          </div>
+        {%- else -%}
+          <div style="border-radius:var(--radius-card,8px);overflow:hidden;background:#d4e8d8;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem">
+            <span style="font-size:0.75rem;color:var(--color-text-muted);font-style:italic">Map: Beverly MA – New England service area</span>
+          </div>
+        {%- endif -%}
+
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.5rem">
+          {%- for block in section.blocks -%}
+            <div {{ block.shopify_attributes }} style="border:1px solid var(--color-border);border-radius:6px;padding:0.5rem 0.75rem;font-size:0.8125rem;text-align:center;color:var(--color-text)">{{ block.settings.city }}</div>
+          {%- endfor -%}
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Servicio local",
+  "tag": "section",
+  "settings": [
+    { "type": "text", "id": "tag", "label": "Etiqueta", "default": "Custom Printing in Beverly, MA" },
+    { "type": "text", "id": "title", "label": "Título (primera línea)", "default": "Proudly local." },
+    { "type": "text", "id": "title_italic", "label": "Título (segunda línea, cursiva)", "default": "Nationally capable." },
+    { "type": "textarea", "id": "text_1", "label": "Párrafo 1", "default": "Inkcora is headquartered in Beverly, Massachusetts — serving businesses across the North Shore, Greater Boston, and all of New England." },
+    { "type": "textarea", "id": "text_2", "label": "Párrafo 2", "default": "Custom t-shirt printing near Beverly MA? Custom hoodies for your Boston-area team? We ship same-region orders in 2–3 days and accommodate same-week rush requests." },
+    { "type": "text", "id": "info_1", "label": "Info 1", "default": "Beverly, MA · Serving all of New England" },
+    { "type": "text", "id": "info_2", "label": "Info 2", "default": "Same-week rush orders available" },
+    { "type": "text", "id": "info_3", "label": "Info 3", "default": "Free shipping on orders over $200" },
+    { "type": "text", "id": "info_4", "label": "Info 4", "default": "+1 (978) 624-8721 · Mon–Fri 9am–6pm EST" },
+    { "type": "text", "id": "cta_label", "label": "CTA — texto", "default": "Get a Local Quote" },
+    { "type": "url", "id": "cta_url", "label": "CTA — enlace" },
+    { "type": "image_picker", "id": "map_image", "label": "Imagen del mapa" }
+  ],
+  "blocks": [
+    {
+      "type": "city",
+      "name": "Ciudad",
+      "settings": [
+        { "type": "text", "id": "city", "label": "Ciudad", "default": "Beverly, MA" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Servicio local",
+      "blocks": [
+        { "type": "city", "settings": { "city": "Beverly, MA" } },
+        { "type": "city", "settings": { "city": "Salem, MA" } },
+        { "type": "city", "settings": { "city": "Gloucester, MA" } },
+        { "type": "city", "settings": { "city": "Newburyport, MA" } },
+        { "type": "city", "settings": { "city": "Danvers, MA" } },
+        { "type": "city", "settings": { "city": "Peabody, MA" } },
+        { "type": "city", "settings": { "city": "Lynn, MA" } },
+        { "type": "city", "settings": { "city": "Ipswich, MA" } },
+        { "type": "city", "settings": { "city": "Manchester, MA" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

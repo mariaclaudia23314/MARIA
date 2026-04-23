@@ -1,0 +1,102 @@
+{% comment %}Inkcora — sections/corporate-accounts.liquid{% endcomment %}
+<section class="section" style="background:var(--color-navy);padding:var(--spacing-sections,5rem) 0;color:#fff">
+  <div class="page-width">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center">
+
+      {%- comment -%} Left: Text + Features {%- endcomment -%}
+      <div>
+        {%- if section.settings.tag != blank -%}
+          <div style="font-size:0.625rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-primary);margin-bottom:1.25rem">{{ section.settings.tag }}</div>
+        {%- endif -%}
+
+        <h2 style="font-family:var(--font-heading,serif);font-size:clamp(2rem,3vw,2.75rem);font-weight:700;color:#fff;line-height:1.15;margin-bottom:1.25rem">
+          {{ section.settings.title }}<br>
+          <em style="color:var(--color-primary);font-weight:400">{{ section.settings.title_italic }}</em>
+        </h2>
+
+        {%- if section.settings.text != blank -%}
+          <p style="font-size:0.9375rem;color:rgba(255,255,255,0.7);line-height:1.7;margin-bottom:2rem">{{ section.settings.text }}</p>
+        {%- endif -%}
+
+        <div style="display:flex;flex-direction:column;gap:1.25rem;margin-bottom:2.5rem">
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'feature' -%}
+              <div {{ block.shopify_attributes }}>
+                <div style="font-size:0.9375rem;font-weight:600;color:#fff;margin-bottom:0.2rem">
+                  <span style="color:var(--color-primary);margin-right:0.5rem">·</span>{{ block.settings.title }}
+                </div>
+                <div style="font-size:0.875rem;color:rgba(255,255,255,0.6);line-height:1.6;padding-left:1rem">{{ block.settings.text }}</div>
+              </div>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+
+        {%- if section.settings.cta_label != blank -%}
+          <a href="{{ section.settings.cta_url }}" style="display:inline-block;border:1.5px solid var(--color-primary);color:var(--color-primary);background:transparent;padding:0.875rem 1.75rem;font-size:0.75rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;text-decoration:none">{{ section.settings.cta_label }}</a>
+        {%- endif -%}
+      </div>
+
+      {%- comment -%} Right: Stat Cards {%- endcomment -%}
+      <div style="display:flex;flex-direction:column;gap:1rem">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'stat_card' -%}
+            <div {{ block.shopify_attributes }} style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:var(--radius-card,8px);padding:1.5rem 2rem">
+              <div style="font-family:var(--font-heading,serif);font-size:2.25rem;font-weight:700;color:var(--color-primary);line-height:1">{{ block.settings.number }}</div>
+              <div style="font-size:1rem;font-weight:600;color:#fff;margin-top:0.375rem">{{ block.settings.title }}</div>
+              <div style="font-size:0.8125rem;color:rgba(255,255,255,0.55);margin-top:0.25rem">{{ block.settings.subtitle }}</div>
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Cuentas corporativas",
+  "tag": "section",
+  "settings": [
+    { "type": "text", "id": "tag", "label": "Etiqueta", "default": "Corporate Accounts" },
+    { "type": "text", "id": "title", "label": "Título (primera línea)", "default": "Built for businesses" },
+    { "type": "text", "id": "title_italic", "label": "Título (segunda línea, cursiva)", "default": "that order smart." },
+    { "type": "textarea", "id": "text", "label": "Descripción", "default": "Inkcora Corporate Accounts give growing businesses dedicated service, flexible billing, and volume pricing — without the complexity of enterprise contracts." },
+    { "type": "text", "id": "cta_label", "label": "CTA — texto", "default": "Apply for Corporate Account →" },
+    { "type": "url", "id": "cta_url", "label": "CTA — enlace" }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Característica",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Título", "default": "Net-30 Billing" },
+        { "type": "textarea", "id": "text", "label": "Descripción", "default": "Order now, pay in 30 days." }
+      ]
+    },
+    {
+      "type": "stat_card",
+      "name": "Tarjeta de estadística",
+      "settings": [
+        { "type": "text", "id": "number", "label": "Número", "default": "Net-30" },
+        { "type": "text", "id": "title", "label": "Título", "default": "Payment Terms Available" },
+        { "type": "text", "id": "subtitle", "label": "Subtítulo", "default": "Invoice billing for established businesses" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Cuentas corporativas",
+      "blocks": [
+        { "type": "feature", "settings": { "title": "Net-30 Billing", "text": "Order now, pay in 30 days. Ideal for agencies, events teams, and growing businesses." } },
+        { "type": "feature", "settings": { "title": "Dedicated Account Manager", "text": "One point of contact who knows your brand, your specs, and your timelines." } },
+        { "type": "feature", "settings": { "title": "Volume Pricing", "text": "Automatic discounts at 10, 50, and 100+ units." } },
+        { "type": "feature", "settings": { "title": "Priority Production", "text": "Corporate accounts get first-in-line production scheduling." } },
+        { "type": "stat_card", "settings": { "number": "Net-30", "title": "Payment Terms Available", "subtitle": "Invoice billing for established businesses" } },
+        { "type": "stat_card", "settings": { "number": "500+", "title": "Corporate Clients Served", "subtitle": "From startups to regional enterprise teams" } },
+        { "type": "stat_card", "settings": { "number": "20%", "title": "Max Volume Discount", "subtitle": "Applied automatically at 50+ units" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

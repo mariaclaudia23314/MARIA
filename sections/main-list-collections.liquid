@@ -5,8 +5,11 @@
       <h1 class="h2" style="margin-bottom:3rem">{{ section.settings.title }}</h1>
     {%- endif -%}
 
+    {%- assign has_collections = false -%}
     <div class="grid grid--{{ section.settings.columns_desktop }}">
       {%- for collection in collections -%}
+        {%- if collection.handle == 'all' -%}{%- continue -%}{%- endif -%}
+        {%- assign has_collections = true -%}
         <a href="{{ collection.url }}" style="display:block;text-decoration:none;color:inherit">
           <div style="border-radius:var(--radius-card);overflow:hidden;border:1px solid var(--color-border);transition:box-shadow 0.2s,transform 0.2s" onmouseover="this.style.boxShadow='0 8px 24px rgba(0,0,0,0.08)';this.style.transform='translateY(-2px)'" onmouseout="this.style.boxShadow='none';this.style.transform='none'">
             {%- if collection.featured_image -%}
@@ -22,10 +25,11 @@
             </div>
           </div>
         </a>
-      {%- else -%}
-        <p style="color:var(--color-text-muted)">No collections found.</p>
       {%- endfor -%}
     </div>
+    {%- unless has_collections -%}
+      <p style="color:var(--color-text-muted)">No collections found.</p>
+    {%- endunless -%}
   </div>
 </section>
 

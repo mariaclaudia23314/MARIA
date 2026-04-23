@@ -1,0 +1,127 @@
+{% comment %}Inkcora — sections/strategic-case.liquid{% endcomment %}
+<section class="section" style="background:var(--color-navy);padding:var(--spacing-sections,5rem) 0;color:#fff">
+  <div class="page-width">
+
+    {%- comment -%} Header: 2-column {%- endcomment -%}
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;margin-bottom:4rem;align-items:end">
+      <div>
+        {%- if section.settings.tag != blank -%}
+          <div style="font-size:0.625rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-primary);margin-bottom:1.25rem">{{ section.settings.tag }}</div>
+        {%- endif -%}
+        <h2 style="font-family:var(--font-heading,serif);font-size:clamp(2rem,3.5vw,3rem);font-weight:700;color:#fff;line-height:1.15">
+          {{ section.settings.title }}<br>
+          <em style="color:var(--color-primary);font-weight:400">{{ section.settings.title_italic }}</em>
+        </h2>
+      </div>
+      <div>
+        {%- if section.settings.intro != blank -%}
+          <p style="font-size:1rem;color:rgba(255,255,255,0.75);line-height:1.7">{{ section.settings.intro }}</p>
+        {%- endif -%}
+      </div>
+    </div>
+
+    {%- comment -%} 3 Columns {%- endcomment -%}
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);border:1px solid rgba(255,255,255,0.12);border-radius:var(--radius-card,8px);overflow:hidden;margin-bottom:2rem">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'column' -%}
+          <div {{ block.shopify_attributes }} style="padding:2.5rem 2rem;{% unless forloop.last %}border-right:1px solid rgba(255,255,255,0.12);{% endunless %}">
+            <div style="margin-bottom:1.5rem;opacity:0.7">
+              {%- case block.settings.icon -%}
+                {%- when 'ring' -%}
+                  <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="10" stroke="rgba(255,255,255,0.8)" stroke-width="1.5"/><circle cx="14" cy="14" r="5" stroke="rgba(255,255,255,0.8)" stroke-width="1.5"/></svg>
+                {%- when 'diamond' -%}
+                  <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M14 4l10 10-10 10L4 14z" stroke="rgba(255,255,255,0.8)" stroke-width="1.5" stroke-linejoin="round"/></svg>
+                {%- else -%}
+                  <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M4 14a10 10 0 0020 0" stroke="rgba(255,255,255,0.8)" stroke-width="1.5"/><line x1="14" y1="4" x2="14" y2="14" stroke="rgba(255,255,255,0.8)" stroke-width="1.5"/></svg>
+              {%- endcase -%}
+            </div>
+            <h3 style="font-family:var(--font-heading,serif);font-size:1.375rem;font-weight:600;color:#fff;margin-bottom:1.5rem">{{ block.settings.title }}</h3>
+            <div style="display:flex;flex-direction:column;gap:1rem">
+              {%- if block.settings.item_1_title != blank -%}
+                <div>
+                  <div style="font-size:0.875rem;font-weight:600;color:var(--color-primary);margin-bottom:0.2rem">· {{ block.settings.item_1_title }}</div>
+                  <div style="font-size:0.8125rem;color:rgba(255,255,255,0.6);line-height:1.6">{{ block.settings.item_1_text }}</div>
+                </div>
+              {%- endif -%}
+              {%- if block.settings.item_2_title != blank -%}
+                <div>
+                  <div style="font-size:0.875rem;font-weight:600;color:var(--color-primary);margin-bottom:0.2rem">· {{ block.settings.item_2_title }}</div>
+                  <div style="font-size:0.8125rem;color:rgba(255,255,255,0.6);line-height:1.6">{{ block.settings.item_2_text }}</div>
+                </div>
+              {%- endif -%}
+              {%- if block.settings.item_3_title != blank -%}
+                <div>
+                  <div style="font-size:0.875rem;font-weight:600;color:var(--color-primary);margin-bottom:0.2rem">· {{ block.settings.item_3_title }}</div>
+                  <div style="font-size:0.8125rem;color:rgba(255,255,255,0.6);line-height:1.6">{{ block.settings.item_3_text }}</div>
+                </div>
+              {%- endif -%}
+            </div>
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+
+    {%- comment -%} Bottom Banner {%- endcomment -%}
+    <div style="border:1px solid rgba(255,255,255,0.12);border-radius:var(--radius-card,8px);padding:2rem 2.5rem;display:grid;grid-template-columns:auto 1fr auto;gap:3rem;align-items:center">
+      <div>
+        <div style="font-family:var(--font-heading,serif);font-size:2.5rem;font-weight:700;color:var(--color-primary);line-height:1;text-transform:uppercase">{{ section.settings.banner_stat }}</div>
+        <div style="font-size:0.625rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-top:0.25rem">{{ section.settings.banner_stat_label }}</div>
+      </div>
+      <div>
+        <div style="font-family:var(--font-heading,serif);font-size:1.25rem;font-weight:500;color:#fff;line-height:1.3;margin-bottom:0.375rem">{{ section.settings.banner_title }}</div>
+        <div style="font-size:0.875rem;color:rgba(255,255,255,0.6);line-height:1.6">{{ section.settings.banner_text }}</div>
+      </div>
+      {%- if section.settings.banner_cta_label != blank -%}
+        <a href="{{ section.settings.banner_cta_url }}" class="btn btn--primary" style="white-space:nowrap">{{ section.settings.banner_cta_label }}</a>
+      {%- endif -%}
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Caso estratégico",
+  "tag": "section",
+  "max_blocks": 3,
+  "settings": [
+    { "type": "text", "id": "tag", "label": "Etiqueta", "default": "The Strategic Case" },
+    { "type": "text", "id": "title", "label": "Título (primera línea)", "default": "Why smart companies" },
+    { "type": "text", "id": "title_italic", "label": "Título (segunda línea, cursiva)", "default": "invest in branded merch." },
+    { "type": "textarea", "id": "intro", "label": "Introducción (columna derecha)", "default": "A single branded item can generate hundreds of brand impressions over its lifetime — combining advertising, loyalty, and corporate culture into one tangible object." },
+    { "type": "header", "content": "Banner inferior" },
+    { "type": "text", "id": "banner_stat", "label": "Estadística", "default": "100s" },
+    { "type": "text", "id": "banner_stat_label", "label": "Etiqueta de estadística", "default": "Brand Impressions Per Item" },
+    { "type": "text", "id": "banner_title", "label": "Título del banner", "default": "The lowest cost-per-impression in marketing." },
+    { "type": "textarea", "id": "banner_text", "label": "Texto del banner", "default": "Branded merchandise delivers lasting exposure at a fraction of the cost of digital, print, or out-of-home advertising." },
+    { "type": "text", "id": "banner_cta_label", "label": "CTA del banner — texto", "default": "Start Your Campaign →" },
+    { "type": "url", "id": "banner_cta_url", "label": "CTA del banner — enlace" }
+  ],
+  "blocks": [
+    {
+      "type": "column",
+      "name": "Columna",
+      "settings": [
+        { "type": "select", "id": "icon", "label": "Ícono", "options": [{"value":"ring","label":"Anillo"},{"value":"diamond","label":"Diamante"},{"value":"half-circle","label":"Semicírculo"}], "default": "ring" },
+        { "type": "text", "id": "title", "label": "Título de columna", "default": "Marketing & Visibility" },
+        { "type": "text", "id": "item_1_title", "label": "Ítem 1 — título", "default": "Brand Ambassadors" },
+        { "type": "textarea", "id": "item_1_text", "label": "Ítem 1 — descripción", "default": "Branded apparel turns customers and staff into walking billboards." },
+        { "type": "text", "id": "item_2_title", "label": "Ítem 2 — título", "default": "Top-of-Mind Recall" },
+        { "type": "textarea", "id": "item_2_text", "label": "Ítem 2 — descripción", "default": "Physical products keep your brand present in everyday moments." },
+        { "type": "text", "id": "item_3_title", "label": "Ítem 3 — título", "default": "Competitive Edge" },
+        { "type": "textarea", "id": "item_3_text", "label": "Ítem 3 — descripción", "default": "A well-designed merch line sets you apart from competitors." }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Caso estratégico",
+      "blocks": [
+        { "type": "column", "settings": { "icon": "ring", "title": "Marketing & Visibility", "item_1_title": "Brand Ambassadors", "item_1_text": "Branded apparel turns customers and staff into walking billboards.", "item_2_title": "Top-of-Mind Recall", "item_2_text": "Physical products keep your brand present in everyday moments.", "item_3_title": "Competitive Edge", "item_3_text": "A well-designed merch line sets you apart from competitors." } },
+        { "type": "column", "settings": { "icon": "diamond", "title": "Loyalty & Relationships", "item_1_title": "Client Appreciation", "item_1_text": "A thoughtfully branded gift creates emotional connection and deepens loyalty.", "item_2_title": "Employee Pride", "item_2_text": "Team apparel fosters belonging, morale, and shared identity.", "item_3_title": "Partner Relations", "item_3_text": "Branded gifts are a powerful B2B relationship-building tool." } },
+        { "type": "column", "settings": { "icon": "half-circle", "title": "Commercial Impact", "item_1_title": "Revenue Stream", "item_1_text": "Branded merchandise can be sold directly as an income line.", "item_2_title": "Event ROI", "item_2_text": "Promotional giveaways at events drive booth traffic and capture leads.", "item_3_title": "Word-of-Mouth", "item_3_text": "A creative, useful product sparks organic recommendations." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

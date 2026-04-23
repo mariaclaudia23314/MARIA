@@ -1,31 +1,50 @@
 {% comment %}Inkcora — sections/collection-banner.liquid{% endcomment %}
-{%- if collection.description != blank or section.settings.show_collection_image and collection.image -%}
-<div style="background:var(--color-navy);padding:3rem 2rem">
+<div style="background:var(--color-navy);padding:3rem 0 2.5rem">
   <div class="page-width">
-    {%- if section.settings.show_collection_image and collection.image -%}
-      <div style="margin-bottom:1.5rem">
-        {{ collection.image | image_url: width: 1200 | image_tag: style: 'width:100%;max-height:300px;object-fit:cover;border-radius:4px', loading: 'eager' }}
-      </div>
+
+    {%- comment -%} Breadcrumb {%- endcomment -%}
+    <nav style="margin-bottom:1.25rem;font-size:0.8125rem" aria-label="Breadcrumb">
+      <a href="{{ routes.root_url }}" style="color:var(--color-primary);text-decoration:none">Home</a>
+      <span style="color:rgba(255,255,255,0.3);margin:0 0.5rem">›</span>
+      <span style="color:rgba(255,255,255,0.45)">{{ collection.title }}</span>
+    </nav>
+
+    {%- comment -%} Tag {%- endcomment -%}
+    {%- if section.settings.tag != blank -%}
+      <div style="font-size:0.625rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-primary);margin-bottom:1rem">{{ section.settings.tag }}</div>
     {%- endif -%}
-    <h1 class="h2" style="color:white;margin-bottom:{% if collection.description != blank and section.settings.show_collection_description %}0.75rem{% else %}0{% endif %}">{{ collection.title }}</h1>
-    {%- if collection.description != blank and section.settings.show_collection_description -%}
-      <div style="font-size:1rem;color:rgba(255,255,255,0.65);line-height:1.75;max-width:600px">{{ collection.description }}</div>
-    {%- endif -%}
+
+    {%- comment -%} Two-line title {%- endcomment -%}
+    <h1 style="font-family:var(--font-heading,serif);line-height:1.1;margin-bottom:1rem">
+      {%- assign title_1 = section.settings.title_line_1 | default: collection.title -%}
+      <span style="display:block;font-size:clamp(2.25rem,5vw,3.75rem);font-weight:700;color:#fff">{{ title_1 }}</span>
+      {%- if section.settings.title_line_2 != blank -%}
+        <em style="display:block;font-size:clamp(2.25rem,5vw,3.75rem);font-weight:400;color:var(--color-primary)">{{ section.settings.title_line_2 }}</em>
+      {%- endif -%}
+    </h1>
+
+    {%- comment -%} Subtitle {%- endcomment -%}
+    <p style="font-size:1rem;color:rgba(255,255,255,0.55);max-width:560px;line-height:1.6">
+      {{ collection.products_count }} products available.
+      {%- if section.settings.show_proof_tagline -%}
+        &nbsp;All include a free digital proof. No minimums.
+      {%- elsif collection.description != blank and section.settings.show_collection_description -%}
+        &nbsp;{{ collection.description | strip_html | truncatewords: 20 }}
+      {%- endif -%}
+    </p>
+
   </div>
 </div>
-{%- else -%}
-<div style="background:var(--color-navy);padding:2.5rem 2rem">
-  <div class="page-width">
-    <h1 class="h2" style="color:white">{{ collection.title }}</h1>
-  </div>
-</div>
-{%- endif -%}
+
 {% schema %}
 {
   "name": "Banner de colección",
   "settings": [
-    { "type": "checkbox", "id": "show_collection_description", "default": true, "label": "Mostrar descripción" },
-    { "type": "checkbox", "id": "show_collection_image", "default": false, "label": "Mostrar imagen de colección" }
+    { "type": "text", "id": "tag", "label": "Etiqueta", "default": "Catalog" },
+    { "type": "text", "id": "title_line_1", "label": "Título línea 1 (blanco)", "info": "Si está vacío, usa el nombre de la colección." },
+    { "type": "text", "id": "title_line_2", "label": "Título línea 2 (dorado, cursiva)" },
+    { "type": "checkbox", "id": "show_proof_tagline", "label": "Mostrar 'Free digital proof. No minimums.'", "default": true },
+    { "type": "checkbox", "id": "show_collection_description", "label": "Mostrar descripción de la colección", "default": false }
   ]
 }
 {% endschema %}

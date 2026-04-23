@@ -1,16 +1,5 @@
 {% comment %}Inkcora — sections/header.liquid{% endcomment %}
 <header class="header" role="banner">
-  {%- if settings.show_announcement_bar and settings.announcement_text != blank -%}
-    <div class="announcement-bar">
-      <p class="announcement-bar__text">
-        {{ settings.announcement_text }}
-        {%- if settings.show_phone_in_header and settings.store_phone != blank -%}
-          &nbsp;·&nbsp;
-          <a href="tel:{{ settings.store_phone | remove: ' ' | remove: '(' | remove: ')' | remove: '-' }}" class="announcement-bar__link">{{ settings.store_phone }}</a>
-        {%- endif -%}
-      </p>
-    </div>
-  {%- endif -%}
   <div class="page-width">
     <div class="header__inner">
       {%- comment -%} Logo {%- endcomment -%}
