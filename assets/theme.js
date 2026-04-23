@@ -69,6 +69,7 @@ function showToast() {
 // Exit intent
 let exitShown = false;
 function initExitIntent() {
+  if (window.Shopify && window.Shopify.designMode) return;
   document.addEventListener('mouseleave', e => {
     if (e.clientY < 10 && !exitShown) {
       exitShown = true;

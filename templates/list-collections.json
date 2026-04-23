@@ -1,0 +1,12 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-list-collections",
+      "settings": {
+        "title": "All Collections",
+        "columns_desktop": "3"
+      }
+    }
+  },
+  "order": ["main"]
+}

@@ -1,0 +1,41 @@
+{% comment %}Inkcora — sections/main-list-collections.liquid{% endcomment %}
+<section class="section">
+  <div class="page-width">
+    {%- if section.settings.title != blank -%}
+      <h1 class="h2" style="margin-bottom:3rem">{{ section.settings.title }}</h1>
+    {%- endif -%}
+
+    <div class="grid grid--{{ section.settings.columns_desktop }}">
+      {%- for collection in collections -%}
+        <a href="{{ collection.url }}" style="display:block;text-decoration:none;color:inherit">
+          <div style="border-radius:var(--radius-card);overflow:hidden;border:1px solid var(--color-border);transition:box-shadow 0.2s,transform 0.2s" onmouseover="this.style.boxShadow='0 8px 24px rgba(0,0,0,0.08)';this.style.transform='translateY(-2px)'" onmouseout="this.style.boxShadow='none';this.style.transform='none'">
+            {%- if collection.featured_image -%}
+              {{ collection.featured_image | image_url: width: 600 | image_tag: style: 'width:100%;aspect-ratio:4/3;object-fit:cover;display:block', loading: 'lazy', alt: collection.title }}
+            {%- else -%}
+              <div style="background:var(--color-background-secondary);aspect-ratio:4/3;display:flex;align-items:center;justify-content:center">
+                {{ 'collection-1' | placeholder_svg_tag }}
+              </div>
+            {%- endif -%}
+            <div style="padding:1.25rem">
+              <h2 style="font-family:var(--font-heading,serif);font-size:1.125rem;font-weight:600;margin-bottom:0.375rem">{{ collection.title }}</h2>
+              <p style="font-size:0.8125rem;color:var(--color-text-muted)">{{ collection.products_count }} products</p>
+            </div>
+          </div>
+        </a>
+      {%- else -%}
+        <p style="color:var(--color-text-muted)">No collections found.</p>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Lista de colecciones",
+  "tag": "section",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Título", "default": "All Collections" },
+    { "type": "select", "id": "columns_desktop", "label": "Columnas (desktop)", "options": [{"value":"2","label":"2"},{"value":"3","label":"3"},{"value":"4","label":"4"}], "default": "3" }
+  ]
+}
+{% endschema %}
