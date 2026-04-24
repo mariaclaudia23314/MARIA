@@ -11,7 +11,7 @@
     <form action="{{ request.path }}" method="GET">
     <div style="display:grid;grid-template-columns:220px 1fr;gap:2.5rem;align-items:start">
       {%- comment -%} Filters sidebar {%- endcomment -%}
-      <aside id="filters-sidebar" style="position:sticky;top:88px">
+      <aside style="position:sticky;top:88px">
         {%- if collection.filters.size > 0 -%}
           {%- for filter in collection.filters -%}
             <div style="margin-bottom:2rem">
@@ -70,4 +70,4 @@
     { "type": "checkbox", "id": "enable_filtering", "label": "Activar filtros", "default": true }
   ]
 }
-{% endschema %} 
+{% endschema %}
