@@ -1,10 +1,17 @@
 {% comment %}Inkcora — sections/main-collection.liquid{% endcomment %}
 <section class="section" style="padding-top:1.5rem">
   <div class="page-width">
+    <div style="margin-bottom:1rem;padding-bottom:1rem;border-bottom:1px solid var(--color-border)">
+      <button type="button" onclick="document.getElementById('filters-sidebar').classList.toggle('filters-hidden')"
+        style="background:var(--color-navy);color:#fff;border:none;padding:0.625rem 1.25rem;font-size:0.75rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;border-radius:var(--radius-button,2px);display:inline-flex;align-items:center;gap:0.5rem">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 3h12M3 7h8M5 11h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        Filters
+      </button>
+    </div>
     <form action="{{ request.path }}" method="GET">
     <div style="display:grid;grid-template-columns:220px 1fr;gap:2.5rem;align-items:start">
       {%- comment -%} Filters sidebar {%- endcomment -%}
-      <aside style="position:sticky;top:88px">
+      <aside id="filters-sidebar" style="position:sticky;top:88px">
         {%- if collection.filters.size > 0 -%}
           {%- for filter in collection.filters -%}
             <div style="margin-bottom:2rem">
@@ -32,7 +39,7 @@
           {%- if section.settings.enable_sorting -%}
             <select onchange="location.search='sort_by='+this.value" style="border:1px solid var(--color-border);border-radius:var(--radius-button);padding:0.5rem 0.875rem;font-size:0.75rem;font-family:inherit;background:white;cursor:pointer">
               {%- for option in collection.sort_options -%}
-                <option value="{{ option.value }}" {% if option.value == collection.sort_by %}selected{% endif %}>{{ option.name }}</option>
+                <option value="{{ option.value }}" {% if option.value == collection.sort_by %}selected{% endif %}>Sort: {{ option.name }}</option>
               {%- endfor -%}
             </select>
           {%- endif -%}
