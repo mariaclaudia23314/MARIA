@@ -37,7 +37,9 @@
       "type": "urgency-bar",
       "settings": {
         "show": true,
-        "urgency_text": "Order by Friday 3pm EST → Ships Monday",
+        "urgency_prefix": "Order by",
+        "urgency_highlight": "Friday 3pm EST",
+        "urgency_suffix": "→ Ships Monday",
         "phone": "+1 (978) 624–8721",
         "guarantee_text": "100% Satisfaction Guarantee",
         "background_color": "#0e1422",
@@ -362,72 +364,17 @@
     "local-service": {
       "type": "local-service",
       "blocks": {
-        "c1": {
-          "type": "city",
-          "settings": {
-            "city": "Beverly, MA"
-          }
-        },
-        "c2": {
-          "type": "city",
-          "settings": {
-            "city": "Salem, MA"
-          }
-        },
-        "c3": {
-          "type": "city",
-          "settings": {
-            "city": "Gloucester, MA"
-          }
-        },
-        "c4": {
-          "type": "city",
-          "settings": {
-            "city": "Newburyport, MA"
-          }
-        },
-        "c5": {
-          "type": "city",
-          "settings": {
-            "city": "Danvers, MA"
-          }
-        },
-        "c6": {
-          "type": "city",
-          "settings": {
-            "city": "Peabody, MA"
-          }
-        },
-        "c7": {
-          "type": "city",
-          "settings": {
-            "city": "Lynn, MA"
-          }
-        },
-        "c8": {
-          "type": "city",
-          "settings": {
-            "city": "Ipswich, MA"
-          }
-        },
-        "c9": {
-          "type": "city",
-          "settings": {
-            "city": "Manchester, MA"
-          }
-        }
+        "c1": { "type": "city", "settings": { "city": "Beverly, MA" } },
+        "c2": { "type": "city", "settings": { "city": "Salem, MA" } },
+        "c3": { "type": "city", "settings": { "city": "Gloucester, MA" } },
+        "c4": { "type": "city", "settings": { "city": "Newburyport, MA" } },
+        "c5": { "type": "city", "settings": { "city": "Danvers, MA" } },
+        "c6": { "type": "city", "settings": { "city": "Peabody, MA" } },
+        "c7": { "type": "city", "settings": { "city": "Lynn, MA" } },
+        "c8": { "type": "city", "settings": { "city": "Ipswich, MA" } },
+        "c9": { "type": "city", "settings": { "city": "Manchester, MA" } }
       },
-      "block_order": [
-        "c1",
-        "c2",
-        "c3",
-        "c4",
-        "c5",
-        "c6",
-        "c7",
-        "c8",
-        "c9"
-      ],
+      "block_order": ["c1","c2","c3","c4","c5","c6","c7","c8","c9"],
       "settings": {
         "tag": "Custom Printing in Beverly, MA",
         "title": "Proudly local.",
@@ -485,11 +432,7 @@
           }
         }
       },
-      "block_order": [
-        "col1",
-        "col2",
-        "col3"
-      ],
+      "block_order": ["col1","col2","col3"],
       "settings": {
         "tag": "The Strategic Case",
         "title": "Why smart companies",
@@ -527,8 +470,8 @@
     "brand-partner",
     "testimonials",
     "corporate-accounts",
-    "local-service",
     "strategic-case",
     "cta-final"
   ]
 }
+
